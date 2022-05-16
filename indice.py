@@ -82,16 +82,12 @@ def ma(values, window:int=4, mode:str='ema'):
         return ema(values, window)
     
 """
-	• Safe Heaven demand: Retornos de los últimos 20 días del bono BCP 10Y y 
-    del Dólar (¿promediar ambos?) vs los retornos del IPSA, donde se mida en un 
-    ratio. Idealmente que sea el indice de stress local vs el IPSA, pero tiene
-    mucho desface en su publicación (15 días).
+	• Safe Heaven demand: Retornos de los últimos 20 días del del Dólar vs los 
+    retornos del IPSA, donde se mida en un ratio.
     
 		○ Tipo de cambio del dólar observado diario -> F073.TCO.PRE.Z.D
 		○ Índice de Precios Selectivo de Acciones, IPSA- Valor nominal - Base: 
 		30 de diciembre de 2002 =1000 -> F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D
-		○ Tasa de interés mercado secundario de los bonos licitados por 
-		el BCCh (BCP) a 10 años -> F022.BCLP.TIS.AN10.NO.Z.D
 		
 	• Junk Bond Demand: Spread bonos soberanos publicados en la API del BCCh
     
@@ -118,3 +114,50 @@ def ma(values, window:int=4, mode:str='ema'):
 """
 
 #%% Safe Heaven demand
+
+# https://stackoverflow.com/a/31287674/6509794
+
+dolar = cleaner('F073.TCO.PRE.Z.D').fillna(method='ffill')
+ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D').fillna(method='ffill')
+
+dolar_ = np.log(dolar) - np.log(dolar.shift(20))
+ipsa_ = np.log(ipsa) - np.log(ipsa.shift(20))
+
+fng = pd.DataFrame()
+fng['safe_heaven'] = dolar_ / ipsa_
+
+del dolar, ipsa, dolar_, ipsa_
+
+#%% Junk Bond demand
+
+embi = cleaner('F019.SPS.PBP.91.D').fillna(method='ffill')
+fng['spreads_junk'] = np.log(embi) - np.log(embi.shift(1))
+
+del embi
+#%% Momentum del mercado 
+
+ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D').fillna(method='ffill')
+
+ipsa_20 = np.log(ipsa) - np.log(ipsa.shift(20))
+ipsa_60 = np.log(ipsa) - np.log(ipsa.shift(60))
+
+fng['momentum'] = ipsa_20 / ipsa_60
+
+del ipsa, ipsa_20, ipsa_60
+
+#%% Volatilidad
+
+# https://stackoverflow.com/a/60669752/6509794
+ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D').fillna(method='ffill')
+
+ipsa_vol_20 = ipsa.rolling(window=20, min_periods=20).std(ddof=0)
+ipsa_vol_60 = ipsa.rolling(window=60, min_periods=60).std(ddof=0)
+
+fng['volatilidad'] = ipsa_vol_20 / ipsa_vol_60
+
+del ipsa, ipsa_vol_20, ipsa_vol_60
+
+#%% Redes sociales (sentimiento)
+
+fng['sentimiento'] = cleaner('F029.IDIE.IND.TOT.D').fillna(method='ffill')
+
