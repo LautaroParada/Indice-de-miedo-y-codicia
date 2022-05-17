@@ -113,26 +113,27 @@ def ma(values, window:int=4, mode:str='ema'):
     ○ Índice de Diario de Incertidumbre Económica -> F029.IDIE.IND.TOT.D
 """
 
-#%% Safe Heaven demand
+#%% Safe Heaven demand -> Relación inversa
 
 # https://stackoverflow.com/a/31287674/6509794
 
 dolar = cleaner('F073.TCO.PRE.Z.D').fillna(method='ffill')
 ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D').fillna(method='ffill')
+ann_factor = 20 * 250
 
 dolar_ = np.log(dolar) - np.log(dolar.shift(20))
-ipsa_ = np.log(ipsa) - np.log(ipsa.shift(20))
+ipsa_ =  np.log(ipsa) - np.log(ipsa.shift(20))
 
 fng = pd.DataFrame()
-fng['safe_heaven'] = (dolar_ - ipsa_) * 100
+fng['safe_heaven'] = (dolar_ / ipsa_).rolling(window=20, min_periods=20).median()
 
 # Graficar los datos
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['safe_heaven'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('Dolar menos IPSA', fontweight='bold')
-plt.title('Retornos mensuales')
+fig.suptitle('Retornos del Dólar respecto al IPSA', fontweight='bold')
+plt.title('Mediana movil de los ultimos 20 dias habiles')
 ax.set_ylabel('')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
@@ -148,9 +149,9 @@ ax.text(0.2, -0.12,
 
 plt.show()
 
-del dolar, ipsa, dolar_, ipsa_
+del dolar, ipsa, dolar_, ipsa_, ann_factor
 
-#%% Junk Bond demand
+#%% Junk Bond demand -> Relación inversa
 
 fng['spreads_junk'] = cleaner('F019.SPS.PBP.91.D').fillna(method='ffill')
 
@@ -159,8 +160,8 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['spreads_junk'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('Spread bonos soberanos', fontweight='bold')
-plt.title('')
+fig.suptitle('Spread bonos soberanos EMBI Chile', fontweight='bold')
+plt.title('Indicador de riesgo país, elaborado por JP Morgan')
 ax.set_ylabel('promedio, puntos base')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
@@ -189,9 +190,9 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['momentum'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('Momentum', fontweight='bold')
-plt.title('')
-ax.set_ylabel('')
+fig.suptitle('Momentum mercado Renta Variable chileno', fontweight='bold')
+plt.title('IPSA y su promedio movil de 125 dias (6 meses)')
+ax.set_ylabel('Peso chilenos (CLP)')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -208,24 +209,25 @@ plt.show()
 
 del ipsa, ipsa_125
 
-#%% Volatilidad
+#%% Volatilidad -> Relación inversa
 
 # https://stackoverflow.com/a/60669752/6509794
 ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D').fillna(method='ffill')
 
 ipsa_vol_20 = ipsa.rolling(window=20, min_periods=20).std(ddof=0)
 ipsa_vol_60 = ipsa.rolling(window=60, min_periods=60).std(ddof=0)
+ann_factor = 20 * 250
 
-fng['volatilidad'] = ipsa_vol_20 - ipsa_vol_60
+fng['volatilidad'] = ((ipsa_vol_20 * ann_factor)  / (ipsa_vol_60 * ann_factor)).rolling(window=60, min_periods=60).median()
 
 # Graficar los datos
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['volatilidad'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('volatilidad', fontweight='bold')
-plt.title('')
-ax.set_ylabel('')
+fig.suptitle('Volatilidad de la Renta variable chilena', fontweight='bold')
+plt.title('Comparación entre los 20 y 60 dias, mediana trimestral del ratio')
+ax.set_ylabel('Ratio')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -240,9 +242,9 @@ ax.text(0.2, -0.12,
 
 plt.show()
 
-del ipsa, ipsa_vol_20, ipsa_vol_60
+del ipsa, ipsa_vol_20, ipsa_vol_60, ann_factor
 
-#%% Redes sociales (sentimiento)
+#%% Redes sociales (sentimiento) -> Relación inversa
 
 fng['sentimiento'] = cleaner('F029.IDIE.IND.TOT.D').fillna(method='ffill')
 
@@ -251,9 +253,9 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['sentimiento'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('sentimiento', fontweight='bold')
-plt.title('')
-ax.set_ylabel('')
+fig.suptitle('Sentimiento del mercado de Renta Variable', fontweight='bold')
+plt.title('Índice diario de incertidumbre económica propuesto por Becerra y Sagner (2020)')
+ax.set_ylabel('Indice')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -272,17 +274,56 @@ plt.show()
 
 fng.dropna(inplace=True)
 
-def rescale(values, new_min:int=0, new_max:int=100):
+from sklearn.preprocessing import MinMaxScaler
+
+def rescale(data:pd.Series, invert:bool=True):
+    scaler_ = MinMaxScaler(feature_range=(0,100))
+    data = data.values.reshape(-1, 1)
+    scaler_ = scaler_.fit(data)
     
-    old_max, old_min = max(values), min(values)
-    return [(new_max - new_min) / (old_max - old_min) * (x - old_min) + new_min for x in values]
+    if invert:
+        return 100 - scaler_.transform(data)
+    else:
+        return scaler_.transform(data)
+
 
 fng['res_safe_heaven'] = rescale(fng['safe_heaven'])
 fng['res_spreads_junk'] = rescale(fng['spreads_junk'])
-fng['res_momentum'] = rescale(fng['momentum'])
+fng['res_momentum'] = rescale(fng['momentum'], invert=False)
 fng['res_volatilidad'] = rescale(fng['volatilidad'])
 fng['res_sentimiento'] = rescale(fng['sentimiento'])
 
 fng['index'] = fng['res_safe_heaven']*0.13 + fng['res_spreads_junk']*0.13 + fng['res_momentum']*0.28 + fng['res_volatilidad']*0.28 + fng['res_sentimiento']*0.18
 
-plt.plot(fng['index'])
+# Graficar los datos
+fig, ax = plt.subplots(figsize=(10, 5))
+
+ax.plot(fng['index'], color='tab:blue')
+ax.grid(True, linestyle='--')
+fig.suptitle('Indice de miedo y codicia para el IPSA', fontweight='bold')
+plt.title('Promedio ponderado de variables instrumentales')
+# Codicia extrema
+ax.fill_between(fng['index'].index, fng['index'].shape[0]*[75], fng['index'].shape[0]*[100], color='darkgreen', alpha=0.35)
+# Codicia
+ax.fill_between(fng['index'].index, fng['index'].shape[0]*[60], fng['index'].shape[0]*[75], color='limegreen', alpha=0.25)
+# Neutral
+ax.fill_between(fng['index'].index, fng['index'].shape[0]*[40], fng['index'].shape[0]*[60], color='gold', alpha=0.25)
+# Miedo
+ax.fill_between(fng['index'].index, fng['index'].shape[0]*[25], fng['index'].shape[0]*[40], color='lightcoral', alpha=0.25)
+# Miedo extremo
+ax.fill_between(fng['index'].index, fng['index'].shape[0]*[0], fng['index'].shape[0]*[25], color='darkred', alpha=0.35)
+
+ax.set_ylabel('Indice')
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+
+# Graph source
+ax.text(0.2, -0.12,  
+         "Fuente: Banco Central de Chile   Gráfico: Lautaro Parada", 
+         horizontalalignment='center',
+         verticalalignment='center', 
+         transform=ax.transAxes, 
+         fontsize=8, 
+         color='black',
+         bbox=dict(facecolor='tab:gray', alpha=0.5))
+
+plt.show()
