@@ -106,8 +106,8 @@ def ma(values, window:int=4, mode:str='ema'):
 		○ Índice de Precios Selectivo de Acciones, IPSA- Valor nominal - Base: 
 		30 de diciembre de 2002 =1000 -> F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D
 		
-	• Redes sociales: Indice de Twitter calculado por el BCCh. Podría ser un
-    promedio junto al indice de incertidumbre política. Habría que conjugar 
+	• Redes sociales: Índice de Twitter calculado por el BCCh. Podría ser un
+    promedio junto al Índice de incertidumbre política. Habría que conjugar 
     las diferentes temporalidades (diaria vs mensual).
     
     ○ Índice de Diario de Incertidumbre Económica -> F029.IDIE.IND.TOT.D
@@ -125,7 +125,7 @@ dolar_ = np.log(dolar) - np.log(dolar.shift(20))
 ipsa_ =  np.log(ipsa) - np.log(ipsa.shift(20))
 
 fng = pd.DataFrame()
-fng['safe_heaven'] = (dolar_ / ipsa_).rolling(window=20, min_periods=20).median()
+fng['safe_heaven'] = (dolar_ / ipsa_).rolling(window=60, min_periods=60).mean()
 
 # Graficar los datos
 fig, ax = plt.subplots(figsize=(10, 5))
@@ -133,8 +133,8 @@ fig, ax = plt.subplots(figsize=(10, 5))
 ax.plot(fng['safe_heaven'], color='tab:blue')
 ax.grid(True, linestyle='--')
 fig.suptitle('Retornos del Dólar respecto al IPSA', fontweight='bold')
-plt.title('Mediana movil de los ultimos 20 dias habiles')
-ax.set_ylabel('')
+plt.title('Media móvil de los retornos de los últimos 60 días hábiles (trimestre)')
+ax.set_ylabel('Dolar / IPSA')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -162,7 +162,7 @@ ax.plot(fng['spreads_junk'], color='tab:blue')
 ax.grid(True, linestyle='--')
 fig.suptitle('Spread bonos soberanos EMBI Chile', fontweight='bold')
 plt.title('Indicador de riesgo país, elaborado por JP Morgan')
-ax.set_ylabel('promedio, puntos base')
+ax.set_ylabel('Puntos base')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -191,8 +191,8 @@ fig, ax = plt.subplots(figsize=(10, 5))
 ax.plot(fng['momentum'], color='tab:blue')
 ax.grid(True, linestyle='--')
 fig.suptitle('Momentum mercado Renta Variable chileno', fontweight='bold')
-plt.title('IPSA y su promedio movil de 125 dias (6 meses)')
-ax.set_ylabel('Peso chilenos (CLP)')
+plt.title('IPSA menos su promedio móvil de 125 días (6 meses)')
+ax.set_ylabel('Índice')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -218,7 +218,7 @@ ipsa_vol_20 = ipsa.rolling(window=20, min_periods=20).std(ddof=0)
 ipsa_vol_60 = ipsa.rolling(window=60, min_periods=60).std(ddof=0)
 ann_factor = 20 * 250
 
-fng['volatilidad'] = ((ipsa_vol_20 * ann_factor)  / (ipsa_vol_60 * ann_factor)).rolling(window=60, min_periods=60).median()
+fng['volatilidad'] = ((ipsa_vol_20 * ann_factor)  / (ipsa_vol_60 * ann_factor)).rolling(window=60, min_periods=60).mean()
 
 # Graficar los datos
 fig, ax = plt.subplots(figsize=(10, 5))
@@ -226,7 +226,7 @@ fig, ax = plt.subplots(figsize=(10, 5))
 ax.plot(fng['volatilidad'], color='tab:blue')
 ax.grid(True, linestyle='--')
 fig.suptitle('Volatilidad de la Renta variable chilena', fontweight='bold')
-plt.title('Comparación entre los 20 y 60 dias, mediana trimestral del ratio')
+plt.title('Comparación entre los 20 y 60 días, media trimestral del ratio')
 ax.set_ylabel('Ratio')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
@@ -253,9 +253,9 @@ fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['sentimiento'], color='tab:blue')
 ax.grid(True, linestyle='--')
-fig.suptitle('Sentimiento del mercado de Renta Variable', fontweight='bold')
-plt.title('Índice diario de incertidumbre económica propuesto por Becerra y Sagner (2020)')
-ax.set_ylabel('Indice')
+fig.suptitle('Índice diario de incertidumbre económica propuesto por Becerra y Sagner (2020)', fontweight='bold')
+plt.title('Funciona como proxy del mercado de renta variable chileno')
+ax.set_ylabel('Índice')
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -273,6 +273,8 @@ plt.show()
 #%% Rescalar las variables
 
 fng.dropna(inplace=True)
+ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D')
+fng = fng.join(ipsa).fillna(method='ffill')
 
 from sklearn.preprocessing import MinMaxScaler
 
@@ -296,10 +298,51 @@ fng['res_sentimiento'] = rescale(fng['sentimiento'])
 fng['index'] = fng['res_safe_heaven']*0.13 + fng['res_spreads_junk']*0.13 + fng['res_momentum']*0.28 + fng['res_volatilidad']*0.28 + fng['res_sentimiento']*0.18
 
 # Graficar los datos
+import statsmodels.api as sm
+import matplotlib
+cycle, trend = sm.tsa.filters.hpfilter(ipsa.resample('M').mean(), 1600*3**4)
+# niveles de Fibonacci
+ipsa_min = ipsa.min()
+ipsa_max = ipsa.max()
+diff = ipsa_max - ipsa_min
+
+level2 = ipsa_max - 0.382 * diff
+level3 = ipsa_max - 0.618 * diff
+
 fig, ax = plt.subplots(figsize=(10, 5))
 
+ax.plot(ipsa.resample('M').mean(), color='tab:blue')
+ax.plot(trend, color='tab:orange')
+ax.add_patch(matplotlib.patches.Rectangle((int(ipsa.shape[0])*1.45, level3), 
+                                   int(ipsa.shape[0]*0.2), int(level2 - level3), 
+                                   color='yellow', alpha=0.65))
+ax.annotate('Rango de Fibonacci\n0.382 -> 0.618', ((int(ipsa.shape[0])*1.45, level3-700)))
+ax.grid(True, linestyle='--')
+fig.suptitle('Índice de Precios Selectivo de Acciones, IPSA', fontweight='bold')
+plt.title('Valor nominal - Base: diciembre de 2002 =1000, frecuencia mensual')
+ax.set_ylabel('Índice ')
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+ax.legend(['IPSA', 'Filtro de Hodrick–Prescott'])
+
+# Graph source
+ax.text(0.2, -0.12,  
+         "Fuente: Banco Central de Chile   Gráfico: Lautaro Parada", 
+         horizontalalignment='center',
+         verticalalignment='center', 
+         transform=ax.transAxes, 
+         fontsize=8, 
+         color='black',
+         bbox=dict(facecolor='tab:gray', alpha=0.5))
+
+plt.show()
+
+
+fig, ax = plt.subplots(figsize=(10, 5))
+ax2 = ax.twinx()
+
 ax.plot(fng['index'], color='tab:blue')
-fig.suptitle('Indice de miedo y codicia para el IPSA', fontweight='bold')
+ax2.plot(fng['value'], color='tab:orange')
+fig.suptitle('Índice de miedo y codicia para el IPSA', fontweight='bold')
 plt.title('Promedio ponderado de variables instrumentales')
 # Codicia extrema
 ax.fill_between(fng['index'].index, fng['index'].shape[0]*[75], fng['index'].shape[0]*[100], color='darkgreen', alpha=0.35)
@@ -312,7 +355,10 @@ ax.fill_between(fng['index'].index, fng['index'].shape[0]*[25], fng['index'].sha
 # Miedo extremo
 ax.fill_between(fng['index'].index, fng['index'].shape[0]*[0], fng['index'].shape[0]*[25], color='darkred', alpha=0.35)
 
-ax.set_ylabel('Indice')
+ax.set_ylabel('Índice', color='tab:blue')
+ax.tick_params(axis='y', labelcolor='tab:blue', labelsize='medium', width=3)
+ax2.set_ylabel('IPSA', color='tab:orange')
+ax2.tick_params(axis='y', labelcolor='tab:orange', labelsize='medium', width=3)
 ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
@@ -327,15 +373,12 @@ ax.text(0.2, -0.12,
 
 plt.show()
 
-del fig, ax
+del fig, ax, ipsa
 
 #%% Estudiar la correlación con el IPSA
 
-ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D')
-fng = fng.join(ipsa).fillna(method='ffill')
-
 # Calculando la regresión
-model = np.poly1d(np.polyfit(fng['index'], fng['value'], 2))
+model = np.poly1d(np.polyfit(fng['index']['2019-10-01':], fng['value']['2019-10-01':], 1))
 polyline = np.linspace(1, 100, fng.shape[0])
 
 # R2
@@ -359,11 +402,11 @@ polyfit(x=fng['index'], y=fng['value'], degree=1)
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.scatter(fng['index'], fng['value'], color='tab:blue')
-ax.plot(polyline, model(polyline), color='tab:orange')
+ax.plot(fng['index'], model(fng['index']), color='tab:orange')
 ax.grid(True, linestyle='--')
 fig.suptitle('Relación entre el índice y el IPSA', fontweight='bold')
 plt.title(f"Datos al {fng.index[-1].strftime('%Y-%m-%d')}")
-ax.set_xlabel('Indice de miedo y codicia')
+ax.set_xlabel('Índice de miedo y codicia')
 ax.set_ylabel('Valores nominales del IPSA')
 
 # Graph source
