@@ -299,7 +299,6 @@ fng['index'] = fng['res_safe_heaven']*0.13 + fng['res_spreads_junk']*0.13 + fng[
 fig, ax = plt.subplots(figsize=(10, 5))
 
 ax.plot(fng['index'], color='tab:blue')
-ax.grid(True, linestyle='--')
 fig.suptitle('Indice de miedo y codicia para el IPSA', fontweight='bold')
 plt.title('Promedio ponderado de variables instrumentales')
 # Codicia extrema
@@ -318,6 +317,57 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
 
 # Graph source
 ax.text(0.2, -0.12,  
+         "Fuente: Banco Central de Chile   Gráfico: Lautaro Parada", 
+         horizontalalignment='center',
+         verticalalignment='center', 
+         transform=ax.transAxes, 
+         fontsize=8, 
+         color='black',
+         bbox=dict(facecolor='tab:gray', alpha=0.5))
+
+plt.show()
+
+del fig, ax
+
+#%% Estudiar la correlación con el IPSA
+
+ipsa = cleaner('F013.IBC.IND.N.7.LAC.CL.CLP.BLO.D')
+fng = fng.join(ipsa).fillna(method='ffill')
+
+# Calculando la regresión
+model = np.poly1d(np.polyfit(fng['index'], fng['value'], 2))
+polyline = np.linspace(1, 100, fng.shape[0])
+
+# R2
+#define function to calculate r-squared
+def polyfit(x, y, degree):
+    results = {}
+    coeffs = np.polyfit(x, y, degree)
+    p = np.poly1d(coeffs)
+    #calculate r-squared
+    yhat = p(x)
+    ybar = np.sum(y)/len(y)
+    ssreg = np.sum((yhat-ybar)**2)
+    sstot = np.sum((y - ybar)**2)
+    results['r_squared'] = ssreg / sstot
+
+    return results
+
+polyfit(x=fng['index'], y=fng['value'], degree=1)
+
+# Graficar los datos
+fig, ax = plt.subplots(figsize=(10, 5))
+
+ax.scatter(fng['index'], fng['value'], color='tab:blue')
+ax.plot(polyline, model(polyline), color='tab:orange')
+ax.grid(True, linestyle='--')
+fig.suptitle('Relación entre el índice y el IPSA', fontweight='bold')
+plt.title(f"Datos al {fng.index[-1].strftime('%Y-%m-%d')}")
+ax.set_xlabel('Indice de miedo y codicia')
+ax.set_ylabel('Valores nominales del IPSA')
+
+# Graph source
+ax.text(0.2, -0.17,  
          "Fuente: Banco Central de Chile   Gráfico: Lautaro Parada", 
          horizontalalignment='center',
          verticalalignment='center', 
