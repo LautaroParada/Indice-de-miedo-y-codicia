@@ -1,0 +1,235 @@
+{
+  "id": "mym-bcch-closure-20261029-v2",
+  "status": "frozen_before_campaign_results",
+  "reference_commit": "7dfcedbad4a08fd0b4d51f4ea57df1997d69fed5",
+  "known_evidence": "The investigators and agents know all prior exploratory results through 2026. No pristine holdout or independent team is claimed.",
+  "data": {
+    "provider": "BCCh API only",
+    "start": "2006-01-01",
+    "end": "2026-10-28",
+    "train_end": "2020-12-31",
+    "test_start": "2021-01-01",
+    "frequency": "monthly; ECB quarterly without repetition",
+    "fit_min_quarters": 20,
+    "test_min_quarters": 16
+  },
+  "resource_limits": {
+    "architectures": 5,
+    "raw_series": 52,
+    "download_batches": 1,
+    "retry_failed_batches": 1,
+    "sensitivity_scenarios_max": 200,
+    "bootstrap_draws": 400,
+    "bootstrap_block_quarters": 4,
+    "literature_queries_max": 20,
+    "new_services": 0,
+    "new_permissions": 0,
+    "model_search": false
+  },
+  "normalization": {
+    "method": "empirical midrank against prior calendar months only",
+    "base_window": 60,
+    "base_minimum": 36,
+    "windows": [
+      36,
+      60,
+      120
+    ],
+    "window_comparison_minimum": "full window of valid observations; common dates reported separately from base",
+    "categories": [
+      25,
+      75
+    ],
+    "change_negligible_points": 5
+  },
+  "families": {
+    "market": [
+      "ipsa",
+      "price_book"
+    ],
+    "confidence": [
+      "ipec",
+      "imce_nonmining"
+    ],
+    "friction": [
+      "bank_spread",
+      "funding_deviation",
+      "rate_volatility",
+      "idie"
+    ],
+    "participation": [
+      "turnover"
+    ],
+    "real_credit": [
+      "real_credit_growth"
+    ],
+    "liquid_composition": [
+      "liquid_share"
+    ]
+  },
+  "minimal_families": {
+    "market": [
+      "ipsa",
+      "price_book"
+    ],
+    "confidence": [
+      "ipec",
+      "imce_nonmining"
+    ],
+    "friction": [
+      "bank_spread",
+      "funding_deviation",
+      "rate_volatility",
+      "idie"
+    ]
+  },
+  "candidates": {
+    "v2": "Frozen prior daily four-source scalar sampled at last complete daily row each month; native horizon retained and documented",
+    "equal_family": "Equal mean of market, confidence and 100-friction; equal component weights within family",
+    "panel6": "Previous six profiles, no single headline; complete components required",
+    "dt905_adapted": "Fixed-development PCA of seven BDE channels, then development-empirical percentile; oriented in development toward tighter conditions. Adaptation, not replication",
+    "minimal3": "Three core profiles with identical definitions to panel6; removes participation, real credit and liquid composition. Singleton banking spread is an ablation, not a new architecture."
+  },
+  "pca": {
+    "features": [
+      "usd",
+      "ipsa",
+      "real10",
+      "bank_spread",
+      "rate_volatility",
+      "real_credit_growth",
+      "copper"
+    ],
+    "orientation": {
+      "usd": 1,
+      "ipsa": -1,
+      "real10": 1,
+      "bank_spread": 1,
+      "rate_volatility": 1,
+      "real_credit_growth": -1,
+      "copper": -1
+    },
+    "standardization": "training mean/std only; real10 uses monthly rate level, others use research feature definitions",
+    "correlation_filter": "abs Pearson >0.8 on development: retain earlier declared feature",
+    "component": 1,
+    "minimum_train_months": 36
+  },
+  "external_economic_test": {
+    "targets": [
+      "ecb_supply_sme",
+      "ecb_supply_large",
+      "ecb_supply_households",
+      "ecb_demand_sme",
+      "ecb_demand_large",
+      "ecb_demand_households"
+    ],
+    "controls": [
+      "imacec_yoy",
+      "cpi_yoy",
+      "tpm_level"
+    ],
+    "estimator": "ridge alpha10; train-only z-scales; quarterly mean of complete monthly rows; all alternatives evaluated on same quarters",
+    "minimum_incremental_mae_gain": 0.1,
+    "required_targets": 2,
+    "required_types": [
+      "supply",
+      "demand"
+    ],
+    "uncertainty": "Paired moving-block bootstrap,400draws,blocks4quarters,95% exploratory intervals. Six targets and five architectures: no confirmatory superiority claim from this campaign.",
+    "accept": "Descriptive corroboration: >=10% MAE gain over controls on >=2targets including supply/demand and positive exploratory interval. This is not confirmatory validation; superiority additionally needs paired interval over simplest competent alternative.",
+    "minimal_noninferiority_mae": 0.05,
+    "forbidden": "ECB association is not a criterion truth for psychological fear/greed; a failed ridge cannot refute all economic information"
+  },
+  "diagnostic_tasks": {
+    "kind": "automated information-preservation controls, not human or independent construct validation",
+    "tasks": [
+      "recover family category and >5-point month change",
+      "detect market-confidence opposing tails",
+      "identify which family moved most",
+      "distinguish zero ECB balance with opposing responses from all unchanged",
+      "identify missing component and abstention"
+    ],
+    "decoder": "train-only ridge alpha10 from each representation to family diagnostic reference; directly displayed coordinates are read directly; test on common dates",
+    "accept_accuracy": 0.9,
+    "minimal_noninferiority_accuracy_points": 5,
+    "aggregation_reject": "error >10% in either category or opposition task, or inability to identify source without showing its decomposition",
+    "fairness": "Any scalar plus the same decomposed dashboard can solve those tasks; that is information of the dashboard, not the scalar",
+    "essential_families": [
+      "market",
+      "confidence",
+      "friction"
+    ],
+    "optional_families": [
+      "participation",
+      "real_credit",
+      "liquid_composition"
+    ]
+  },
+  "stability": {
+    "weight_multipliers": [
+      0.8,
+      1.2
+    ],
+    "weight_draws": 24,
+    "minor_median_max": 5,
+    "minor_p95_max": 10,
+    "minor_category_change_rate_max": 0.1,
+    "minor_opposite_tail_rate_max": 0.01,
+    "minimum_common_months": 36,
+    "windows": "change of reference horizon, reported as interpretation dependence; not equivalent economic questions",
+    "ablation": "leave one component or family, intentional equal reweighting only for that alternative; missingness never reweighted",
+    "missingness": "one missing component => missing mandatory profile; always show missing source",
+    "extremes": "single historical component replaced by median+8MAD, before test; current genuine extremes expected to alter diagnosis",
+    "revision_scenarios": "+/-0.25 development MAD applied only to2021-01..2021-12 perfeature; hypothetical, not observed revisions",
+    "lags_months": [
+      1,
+      2
+    ],
+    "lag_scope": "uniform and asymmetric family delays; not historical availability reconstruction",
+    "range_abstention": "Report base60 + full-window36/60/120 envelope where available. Categorical description only if all ranks in same category and width<=20. No label without all three horizons; numerical values remain identified by horizon",
+    "stable_label_coverage_minimum": 0.5,
+    "episode_windows": [
+      [
+        "2019-10",
+        "2020-12"
+      ],
+      [
+        "2021-01",
+        "2022-12"
+      ],
+      [
+        "2023-01",
+        "2026-09"
+      ]
+    ],
+    "rank_metric": "Spearman on common months; cannot override category/opposite-tail failures",
+    "coverage_denominator": "all calendar months2021-01..last complete month; missing full120-month horizon counts as abstention"
+  },
+  "dynamic_gate": {
+    "question": "Is persistent disagreement a stable dynamic result rather than normalization memory?",
+    "states": [
+      "market",
+      "confidence",
+      "friction"
+    ],
+    "sindy_library": "discrete-time degree2: constant+3states+6quadratics=10 terms per equation",
+    "minimum_training_rows_per_library_term": 10,
+    "minimum_effective_training_rows": 100,
+    "minimum_validation_months": 36,
+    "effective_n": "minimum over states n*(1-rho1)/(1+rho1), bounded[1,n]",
+    "if_fail": "Do not fit SINDy; report failure of identifiability gate. Run persistence and ridge VAR1 only as diagnostic forecasting benchmarks, not financial forecasts"
+  },
+  "selection": {
+    "order": [
+      "v2",
+      "equal_family",
+      "dt905_adapted",
+      "minimal3",
+      "panel6"
+    ],
+    "rule": "Fewest mandatory inputs among methods passing relevant essential gates; scalar construct failure forbids fear/greed naming regardless of software. If no scalar passes, keep a descriptive panel with explicit limitations; if stable-label coverage fails, no confident standardized headline. Human usability remains untested without actual participants.",
+    "fear_greed_gate": "Independent discriminant evidence about risk-taking preferences net of fundamentals is indispensable; mere prices/credit/confidence or their correlations do not identify that construct",
+    "novelty_gate": "A bounded search can refute broad novelty claims but cannot establish global priority. Claim only a verified technical/descriptive contribution."
+  },
+  "seed": 20261029
+}

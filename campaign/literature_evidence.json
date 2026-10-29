@@ -1,0 +1,261 @@
+{
+  "reviewed_at": "2026-10-29",
+  "scope": "BCCh-only observational tool; literature supplies methods and counterarguments, not external data",
+  "search_closed": true,
+  "consultation_calls": {
+    "total": 12,
+    "scite_papers_search_literature": 7,
+    "web_run": 5,
+    "web_keyword_searches": 1
+  },
+  "selected_antecedents": 7,
+  "formal_independence": false,
+  "independence_reason": "All reviewers know the previous exploration; temporal separation does not erase prior model-selection exposure.",
+  "editorial_notice_policy": "Missing editorialNotices means not reported, not a verified absence of editorial notices.",
+  "references": [
+    {
+      "id": "dt905",
+      "authors": [
+        "Nicolás Álvarez",
+        "Antonio Fernandois",
+        "Andrés Sagner"
+      ],
+      "year": 2021,
+      "title": "Economic Growth at Risk: An Application to Chile",
+      "series": "BCCh Working Paper 905",
+      "primary_url": "https://www.bcentral.cl/documents/33528/133326/DTBC_905.pdf/098a96a4-1314-3dd7-213d-d7f8881fa5a4?t=1693318657310",
+      "verified_printed_pages": [
+        6,
+        7,
+        8,
+        13,
+        15,
+        19
+      ],
+      "pdf_page_offset": 3,
+      "access": "official PDF indexed text",
+      "scite_match": false,
+      "editorial_notices": "not_reported",
+      "excerpt": "the aggregation of user-specified subgroups",
+      "excerpt_page": 7,
+      "screenshot_limit": "PDF page 22 returned no visible image; PDF page 10 cache error"
+    },
+    {
+      "id": "dt1080",
+      "authors": [
+        "Elías Albagli",
+        "Guillermo Carlomagno",
+        "Javier Ledezma",
+        "María Teresa Reszczynski"
+      ],
+      "year": 2026,
+      "title": "Fundamental Drivers of Financial Conditions",
+      "series": "BCCh Working Paper 1080",
+      "primary_url": "https://www.bcentral.cl/contenido/-/detalle/publicaciones/investigacion-economica/documento-de-trabajo-1080",
+      "verified_printed_pages": [
+        1,
+        4,
+        5
+      ],
+      "access": "official abstract and partial indexed PDF",
+      "scite_match": false,
+      "editorial_notices": "not_reported"
+    },
+    {
+      "id": "ciss",
+      "authors": [
+        "Dániel Holló",
+        "Manfred Kremer",
+        "Marco Lo Duca"
+      ],
+      "year": 2012,
+      "title": "CISS - A Composite Indicator of Systemic Stress in the Financial System",
+      "series": "ECB Working Paper 1426",
+      "primary_url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1426.pdf",
+      "doi": "10.2139/ssrn.2018792",
+      "duplicate_record": "10.2139/ssrn.1611717",
+      "access": "official PDF and Scite fulltextExcerpts",
+      "editorial_notices": "field_absent",
+      "excerpt": "high stress prevails in several market segments at the same time"
+    },
+    {
+      "id": "baker_wurgler",
+      "authors": [
+        "Malcolm Baker",
+        "Jeffrey Wurgler"
+      ],
+      "year": 2007,
+      "title": "Investor Sentiment in the Stock Market",
+      "doi": "10.1257/jep.21.2.129",
+      "access": "Scite metadata, abstract and own-paper Smart Citation passages",
+      "editorial_notices": "field_absent",
+      "excerpt": "is not justified by the facts at hand"
+    },
+    {
+      "id": "gai_vause",
+      "authors": [
+        "Prasanna Gai",
+        "Nicholas Vause"
+      ],
+      "year": 2005,
+      "published_version_year": 2006,
+      "title": "Measuring Investors' Risk Appetite",
+      "doi": "10.2139/ssrn.872695",
+      "primary_url": "https://www.bankofengland.co.uk/working-paper/2005/measuring-investors-risk-appetite",
+      "published_version_url": "https://www.ijcb.org/journal/v2n1/measuring-investors-risk-appetite",
+      "access": "Scite fulltextExcerpts and official publication metadata",
+      "editorial_notices": "field_absent",
+      "excerpt": "the true path of investors' risk appetite remains unobserved"
+    },
+    {
+      "id": "ludvigson",
+      "authors": [
+        "Sydney C. Ludvigson"
+      ],
+      "year": 2004,
+      "title": "Consumer Confidence and Consumer Spending",
+      "doi": "10.1257/0895330041371222",
+      "primary_url": "https://www.aeaweb.org/articles?id=10.1257/0895330041371222",
+      "access": "official abstract only; Scite contentDenied=true",
+      "editorial_notices": "field_absent",
+      "excerpt": "relatively modest amount of additional variation"
+    },
+    {
+      "id": "sindy",
+      "authors": [
+        "Steven L. Brunton",
+        "Joshua L. Proctor",
+        "J. Nathan Kutz"
+      ],
+      "year": 2016,
+      "title": "Discovering governing equations from data by sparse identification of nonlinear dynamical systems",
+      "doi": "10.1073/pnas.1517384113",
+      "access": "Scite fulltextExcerpts",
+      "editorial_notices": "field_absent",
+      "excerpt": "the resulting derivative matrix may have large noise magnitude"
+    }
+  ],
+  "queries": [
+    {
+      "id": 1,
+      "service": "web",
+      "action": "open official DT905 PDF",
+      "selected": [
+        "dt905"
+      ]
+    },
+    {
+      "id": 2,
+      "service": "Scite Papers",
+      "action": "titles DT905, approximate Chile FCI title and CISS; term principal components financial conditions index variables; limit 5",
+      "hits": 2,
+      "selected": [
+        "ciss"
+      ],
+      "limitation": "Duplicate CISS versions; approximate second title did not identify DT1080."
+    },
+    {
+      "id": 3,
+      "service": "web",
+      "action": "open DT905 at indexed lines 345 and 705",
+      "selected": [
+        "dt905"
+      ]
+    },
+    {
+      "id": 4,
+      "service": "Scite Papers",
+      "action": "titles Baker-Wurgler, Ludvigson, Gai-Vause, Brunton et al.; limit 5",
+      "total": 82,
+      "hits": 5,
+      "selected": [],
+      "limitation": "Broad title matching returned irrelevant papers; all five excluded."
+    },
+    {
+      "id": 5,
+      "service": "web",
+      "action": "open official CISS PDF and DT1080 page",
+      "selected": [
+        "ciss",
+        "dt1080"
+      ]
+    },
+    {
+      "id": 6,
+      "service": "Scite Papers",
+      "action": "DOIs Baker-Wurgler, Ludvigson, SINDy; term sentiment OR confidence OR noise OR measurements; limit 3",
+      "hits": 3,
+      "selected": [
+        "baker_wurgler",
+        "ludvigson",
+        "sindy"
+      ]
+    },
+    {
+      "id": 7,
+      "service": "Scite Papers",
+      "action": "title Measuring Investors' Risk Appetite; author Gai; limit 2",
+      "hits": 1,
+      "selected": [
+        "gai_vause"
+      ]
+    },
+    {
+      "id": 8,
+      "service": "Scite Papers",
+      "action": "DOIs CISS2012, Baker-Wurgler, Gai-Vause; term orthogonal OR correlation OR risk aversion; limit 3",
+      "hits": 3,
+      "selected": [
+        "ciss",
+        "baker_wurgler",
+        "gai_vause"
+      ]
+    },
+    {
+      "id": 9,
+      "service": "web",
+      "action": "search site:ijcb.org Gai Vause Measuring Investors; open Ludvigson AEA DOI",
+      "selected": [
+        "gai_vause",
+        "ludvigson"
+      ],
+      "limitation": "Only primary publisher and Bank of England results used."
+    },
+    {
+      "id": 10,
+      "service": "Scite Papers",
+      "action": "title:(\"Economic Growth at Risk: An Application to Chile\") OR title:(\"Fundamental Drivers of Financial Conditions\"); limit 2",
+      "hits": 0,
+      "selected": [],
+      "limitation": "No match in bounded query is not proof of non-indexing or nonexistence."
+    },
+    {
+      "id": 11,
+      "service": "Scite Papers",
+      "action": "SINDy DOI; term coordinates OR basis OR measurements OR sparse; limit 1",
+      "hits": 1,
+      "selected": [
+        "sindy"
+      ]
+    },
+    {
+      "id": 12,
+      "service": "web",
+      "action": "DT905 PDF pages 22 and 10 screenshots; AEA lines 23; IJCB article page; linked DT1080 PDF",
+      "selected": [
+        "dt905",
+        "dt1080",
+        "gai_vause",
+        "ludvigson"
+      ],
+      "limitation": "Screenshots were not visually usable; the source table is supported by indexed PDF text."
+    }
+  ],
+  "judgments": {
+    "novelty": "Not established; absence of a search match is not evidence of originality.",
+    "defensible_contribution": "Incremental descriptive usefulness of low-complexity, reproducible BCCh dimensions and disagreements against competent aggregate and disaggregated benchmarks.",
+    "deterministic_gap": "A=(M+C)/2 and D=M-C are invertible to M,C; a gap cannot add information beyond its own components.",
+    "sindy": "Identifiability not established by literature or row count; no claim of structural economic laws.",
+    "required_disclosure": "Revised histories and previous exploration prevent claiming independent real-time validation."
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "id": "mym-descriptive-reference-20261029",
+  "campaign_verdict": "B_NO_RESPALDADO",
+  "verdict_scope": "Aggregated fear/greed and generally stable headline diagnosis",
+  "status": "retained descriptive reference, not a validated winning index",
+  "reference_method": "panel6",
+  "selection_rule": "Single deletion only. If exactly one removal satisfies all six targets on selection, check that removal on evaluation. Keep fullpanel6 if none/multiple or if evaluation fails. Do not choose another removal using evaluation.",
+  "selection_separation_audit": "selection_audit.json",
+  "drop_checks": {
+    "participation": {
+      "worst_point_mae_loss": 0.11399863770472551,
+      "within_point_margin_all_targets": false,
+      "intervals": [
+        [
+          -0.19867500712277555,
+          0.10210410011898331
+        ],
+        [
+          -0.19683922247079996,
+          -0.0734049798543728
+        ],
+        [
+          -0.040786178062899546,
+          0.22772291011280127
+        ],
+        [
+          0.01866737420480039,
+          0.06670749877482932
+        ],
+        [
+          -0.24670603142918415,
+          0.004346026619207678
+        ],
+        [
+          -0.021319185776471773,
+          0.13378951350997967
+        ]
+      ]
+    },
+    "real_credit": {
+      "worst_point_mae_loss": 0.2819120749161841,
+      "within_point_margin_all_targets": false,
+      "intervals": [
+        [
+          -0.041436623095487055,
+          -0.006481890740654359
+        ],
+        [
+          -0.0876434655481624,
+          0.1282709205736594
+        ],
+        [
+          -0.0035057895244027964,
+          0.014566381958442636
+        ],
+        [
+          -0.011913229604433521,
+          0.018593578172132873
+        ],
+        [
+          0.0017909564169866783,
+          0.07816917819920696
+        ],
+        [
+          -0.5751088701827316,
+          -0.11437770303307992
+        ]
+      ]
+    },
+    "liquid_composition": {
+      "worst_point_mae_loss": 0.040830607073807146,
+      "within_point_margin_all_targets": true,
+      "intervals": [
+        [
+          -0.0062795662373061325,
+          0.12913965039373404
+        ],
+        [
+          -0.0045715878668528605,
+          0.010568540880564466
+        ],
+        [
+          -0.17765491749797394,
+          0.04029302156837177
+        ],
+        [
+          -0.05108011292659137,
+          0.20551741179589705
+        ],
+        [
+          -0.015886985574144818,
+          0.03280531264978717
+        ],
+        [
+          0.0018349223497457475,
+          0.02694207236448286
+        ]
+      ]
+    }
+  },
+  "families": {
+    "market": [
+      "ipsa",
+      "price_book"
+    ],
+    "confidence": [
+      "ipec",
+      "imce_nonmining"
+    ],
+    "friction": [
+      "bank_spread",
+      "funding_deviation",
+      "rate_volatility",
+      "idie"
+    ],
+    "participation": [
+      "turnover"
+    ],
+    "real_credit": [
+      "real_credit_growth"
+    ],
+    "liquid_composition": [
+      "liquid_share"
+    ]
+  },
+  "weights": {
+    "market": {
+      "ipsa": 0.5,
+      "price_book": 0.5
+    },
+    "confidence": {
+      "ipec": 0.5,
+      "imce_nonmining": 0.5
+    },
+    "friction": {
+      "bank_spread": 0.25,
+      "funding_deviation": 0.25,
+      "rate_volatility": 0.25,
+      "idie": 0.25
+    },
+    "participation": {
+      "turnover": 1.0
+    },
+    "real_credit": {
+      "real_credit_growth": 1.0
+    },
+    "liquid_composition": {
+      "liquid_share": 1.0
+    }
+  },
+  "frequency": "monthly; ECB quarterly separate",
+  "normalization": {
+    "method": "empirical midrank against prior calendar months only",
+    "base_window": 60,
+    "base_minimum": 36,
+    "windows": [
+      36,
+      60,
+      120
+    ],
+    "window_comparison_minimum": "full window of valid observations; common dates reported separately from base",
+    "categories": [
+      25,
+      75
+    ],
+    "change_negligible_points": 5
+  },
+  "missingness": "All components required per profile; do not reweight or interpolate",
+  "label_abstention": "Report base60 + full-window36/60/120 envelope where available. Categorical description only if all ranks in same category and width<=20. No label without all three horizons; numerical values remain identified by horizon",
+  "cutoff": "2026-10-28",
+  "update": "Immutable snapshot with download timestamp; observation-period labels; no point-in-time claim. Recompute without future observations. Do not overwrite prior snapshots.",
+  "prohibited": [
+    "fear/greed labels",
+    "direct risk preference measurement",
+    "investment recommendations",
+    "causal interpretation",
+    "real-time backtest",
+    "human usability claim",
+    "scientific novelty claim"
+  ]
+}

@@ -1,0 +1,48 @@
+scenario,kind,method,reference_definition,n,median_abs,p95_abs,max_abs,spearman,category_change_rate,opposite_tail_rate,direction_inversion_n,direction_comparable_n,max_date,status,component,source,refit,direction
+v2_window_36_vs60,reference_horizon,v2,"60x21 observations, full history; differs from native 504/min252",69,5.49933862433862,11.526455026455022,15.479497354497354,0.9449397150164414,0.11594202898550725,0.0,0,51,2021-08-31,ok,,,,
+v2_window_120_vs60,reference_horizon,v2,"60x21 observations, full history; differs from native 504/min252",46,12.31646825396826,18.81200396825397,20.019841269841272,0.8813444341658958,0.17391304347826086,0.0,0,32,2023-05-31,ok,,,,
+v2_without_presion_cambiaria,component_ablation,v2,,69,2.3455215419500917,7.005385487528341,8.432539682539684,0.9795761782974061,0.028985507246376812,0.0,0,50,2023-07-31,ok,presion_cambiaria,,,
+v2_without_volatilidad_cambiaria,component_ablation,v2,,69,2.5793650793650826,6.29251700680272,8.368764172335602,0.9787537223723521,0.07246376811594203,0.0,0,52,2024-10-31,ok,volatilidad_cambiaria,,,
+v2_without_momentum_cobre,component_ablation,v2,,69,5.315806878306887,14.72883597883597,16.575727513227505,0.9129338691998539,0.11594202898550725,0.0,0,43,2024-06-30,ok,momentum_cobre,,,
+v2_without_variabilidad_tasas,component_ablation,v2,,69,5.398478835978835,12.99768518518519,13.72354497354496,0.9236839942291996,0.14492753623188406,0.0,1,48,2021-10-31,ok,variabilidad_tasas,,,
+v2_without_incertidumbre,component_ablation,v2,,69,6.754298941798936,14.548611111111107,17.551256613756614,0.8914504932407746,0.11594202898550725,0.0,1,50,2021-06-30,ok,incertidumbre,,,
+v2_extreme_dolar,historical_outlier,v2,,69,0.0,0.5208333333333357,9.201388888888886,0.9975886006576544,0.0,0.0,0,56,2021-01-31,ok,,dolar,Native rolling normalization recomputed,
+v2_revision_dolar_-1,hypothetical_revision,v2,,69,0.024801587301588768,0.3621031746031689,1.8353174603174551,0.9995615637559372,0.0,0.0,0,56,2021-01-31,ok,,dolar,,-1.0
+v2_revision_dolar_1,hypothetical_revision,v2,,69,0.024801587301595873,0.4464285714285694,1.7113095238095326,0.9993149371529148,0.0,0.0,0,56,2021-01-31,ok,,dolar,,1.0
+v2_extreme_cobre,historical_outlier,v2,,69,0.0,0.049603174603177536,10.416666666666671,0.9975794445012837,0.0,0.0,0,56,2021-01-31,ok,,cobre,Native rolling normalization recomputed,
+v2_revision_cobre_-1,hypothetical_revision,v2,,69,0.0,0.5654761904761887,4.414682539682545,0.9988673730361711,0.0,0.0,0,56,2021-01-31,ok,,cobre,,-1.0
+v2_revision_cobre_1,hypothetical_revision,v2,,69,0.0,0.5456349206349245,4.960317460317455,0.9987120818107693,0.0,0.0,0,56,2021-01-31,ok,,cobre,,1.0
+v2_extreme_tasa_10y,historical_outlier,v2,,69,0.0,1.0416666666666714,18.353174603174608,0.9957160734437428,0.0,0.0,0,56,2021-01-31,ok,,tasa_10y,Native rolling normalization recomputed,
+v2_revision_tasa_10y_-1,hypothetical_revision,v2,,69,0.0,0.9920634920634939,11.904761904761912,0.9963737338169923,0.0,0.0,0,56,2021-01-31,ok,,tasa_10y,,-1.0
+v2_revision_tasa_10y_1,hypothetical_revision,v2,,69,0.0,0.992063492063491,9.474206349206355,0.9977986646257003,0.0,0.0,0,56,2021-01-31,ok,,tasa_10y,,1.0
+v2_extreme_incertidumbre,historical_outlier,v2,,69,0.0,0.0,0.0,1.0,0.0,0.0,0,56,2021-01-31,ok,,incertidumbre,Native rolling normalization recomputed,
+v2_revision_incertidumbre_-1,hypothetical_revision,v2,,69,0.0,0.654761904761906,1.1408730158730158,0.999671172816953,0.014492753623188406,0.0,0,56,2022-07-31,ok,,incertidumbre,,-1.0
+v2_revision_incertidumbre_1,hypothetical_revision,v2,,69,0.0,0.773809523809521,1.0912698412698383,0.9994884910485934,0.0,0.0,0,56,2021-12-31,ok,,incertidumbre,,1.0
+pca_without_usd,component_ablation,dt905_adapted,,68,13.978494623655914,42.63440860215053,62.36559139784946,0.790564336442144,0.29411764705882354,0.014705882352941176,0,25,2023-10-31,ok,usd,,Development only,
+pca_extreme_usd,historical_outlier,dt905_adapted,,68,5.376344086021506,16.451612903225804,19.354838709677423,0.9797579139350383,0.08823529411764706,0.0,0,46,2024-02-29,ok,usd,,Development only,
+pca_revision_usd_-1,hypothetical_revision,dt905_adapted,,68,0.0,2.1505376344086047,4.3010752688172005,0.9982814477095933,0.0,0.0,0,50,2021-08-31,ok,usd,,Frozen original development fit,-1.0
+pca_revision_usd_1,hypothetical_revision,dt905_adapted,,68,0.0,1.7741935483870903,3.225806451612911,0.9993472741192365,0.029411764705882353,0.0,0,49,2021-08-31,ok,usd,,Frozen original development fit,1.0
+pca_without_ipsa,component_ablation,dt905_adapted,,68,8.064516129032258,25.053763440860205,25.80645161290323,0.9051978971745767,0.23529411764705882,0.0,2,44,2022-06-30,ok,ipsa,,Development only,
+pca_extreme_ipsa,historical_outlier,dt905_adapted,,68,1.0752688172043037,4.999999999999998,5.376344086021518,0.9920093593226018,0.014705882352941176,0.0,0,47,2022-09-30,ok,ipsa,,Development only,
+pca_revision_ipsa_-1,hypothetical_revision,dt905_adapted,,68,0.0,1.7741935483870903,3.225806451612911,0.9994816551203182,0.029411764705882353,0.0,0,49,2021-08-31,ok,ipsa,,Frozen original development fit,-1.0
+pca_revision_ipsa_1,hypothetical_revision,dt905_adapted,,68,0.0,2.1505376344086025,4.3010752688172005,0.9988288988380775,0.0,0.0,0,50,2021-08-31,ok,ipsa,,Frozen original development fit,1.0
+pca_without_real10,component_ablation,dt905_adapted,,68,0.7074136955291479,1.9060554612337286,2.86361063950198,0.9958556054681085,0.0,0.0,0,49,2023-12-31,ok,real10,,Development only,
+pca_extreme_real10,historical_outlier,dt905_adapted,,68,2.1505376344086002,4.301075268817208,5.376344086021518,0.9957212948589166,0.0,0.0,0,49,2021-12-31,ok,real10,,Development only,
+pca_revision_real10_-1,hypothetical_revision,dt905_adapted,,68,0.0,0.0,1.0752688172043037,1.0,0.014705882352941176,0.0,0,50,2021-09-30,ok,real10,,Frozen original development fit,-1.0
+pca_revision_real10_1,hypothetical_revision,dt905_adapted,,68,0.0,0.0,1.0752688172043037,0.9995392593653661,0.0,0.0,0,50,2021-11-30,ok,real10,,Frozen original development fit,1.0
+pca_without_bank_spread,component_ablation,dt905_adapted,,68,1.0752688172043037,3.9247311827957,6.451612903225808,0.997256042096088,0.029411764705882353,0.0,0,50,2022-06-30,ok,bank_spread,,Development only,
+pca_extreme_bank_spread,historical_outlier,dt905_adapted,,68,1.0752688172043037,3.9247311827957,6.451612903225808,0.9968615989445634,0.029411764705882353,0.0,0,50,2022-06-30,ok,bank_spread,,Development only,
+pca_revision_bank_spread_-1,hypothetical_revision,dt905_adapted,,68,0.0,1.075268817204303,4.3010752688172005,0.9991072763933547,0.0,0.0,0,50,2021-08-31,ok,bank_spread,,Frozen original development fit,-1.0
+pca_revision_bank_spread_1,hypothetical_revision,dt905_adapted,,68,0.0,1.0752688172043028,2.1505376344086073,0.999961613435296,0.014705882352941176,0.0,0,49,2021-08-31,ok,bank_spread,,Frozen original development fit,1.0
+pca_without_rate_volatility,component_ablation,dt905_adapted,,68,2.985586822237474,14.584763212079613,29.455502173415688,0.9642945428705334,0.07352941176470588,0.0,2,44,2021-11-30,ok,rate_volatility,,Development only,
+pca_extreme_rate_volatility,historical_outlier,dt905_adapted,,68,1.075268817204301,3.9247311827956985,9.677419354838705,0.9940593885844432,0.0,0.0,0,47,2021-11-30,ok,rate_volatility,,Development only,
+pca_revision_rate_volatility_-1,hypothetical_revision,dt905_adapted,,68,0.0,1.0752688172042975,2.1505376344086002,0.9991744894106968,0.0,0.0,0,50,2021-05-31,ok,rate_volatility,,Frozen original development fit,-1.0
+pca_revision_rate_volatility_1,hypothetical_revision,dt905_adapted,,68,0.0,1.0752688172043008,1.0752688172043037,0.9999904033933598,0.014705882352941176,0.0,0,50,2021-08-31,ok,rate_volatility,,Frozen original development fit,1.0
+pca_without_real_credit_growth,component_ablation,dt905_adapted,,68,11.827956989247314,29.03225806451613,32.258064516129025,0.9693893609375913,0.38235294117647056,0.0,0,47,2023-09-30,ok,real_credit_growth,,Development only,
+pca_extreme_real_credit_growth,historical_outlier,dt905_adapted,,68,6.451612903225808,17.903225806451612,21.505376344086017,0.9887550667107552,0.25,0.0,0,47,2023-09-30,ok,real_credit_growth,,Development only,
+pca_revision_real_credit_growth_-1,hypothetical_revision,dt905_adapted,,68,0.0,1.075268817204303,4.3010752688172005,0.9991072763933547,0.0,0.0,0,50,2021-08-31,ok,real_credit_growth,,Frozen original development fit,-1.0
+pca_revision_real_credit_growth_1,hypothetical_revision,dt905_adapted,,68,0.0,1.0752688172043037,2.1505376344086073,0.9999328240758512,0.014705882352941176,0.0,0,49,2021-08-31,ok,real_credit_growth,,Frozen original development fit,1.0
+pca_without_copper,component_ablation,dt905_adapted,,68,5.061964643703297,22.400674321122647,32.99617277200655,0.9475548461067728,0.08823529411764706,0.0,0,41,2022-09-30,ok,copper,,Development only,
+pca_extreme_copper,historical_outlier,dt905_adapted,,68,0.0,3.225806451612897,4.3010752688172005,0.9980813241347166,0.0,0.0,0,50,2022-08-31,ok,copper,,Development only,
+pca_revision_copper_-1,hypothetical_revision,dt905_adapted,,68,0.0,1.0752688172043037,2.1505376344086073,0.9999328240758512,0.014705882352941176,0.0,0,49,2021-08-31,ok,copper,,Frozen original development fit,-1.0
+pca_revision_copper_1,hypothetical_revision,dt905_adapted,,68,0.0,1.7741935483870943,4.3010752688172005,0.9991072763933547,0.0,0.0,0,50,2021-08-31,ok,copper,,Frozen original development fit,1.0

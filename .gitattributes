@@ -1,2 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Frozen evidence is hashed byte-for-byte: Git must not rewrite line endings.
+campaign/snapshot-reference/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+campaign/contract.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+campaign/contract-v1.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+campaign/selection-check.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+campaign/results/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

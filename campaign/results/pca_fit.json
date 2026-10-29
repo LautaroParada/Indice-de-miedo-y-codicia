@@ -1,0 +1,43 @@
+{
+  "retained": [
+    "usd",
+    "ipsa",
+    "real10",
+    "bank_spread",
+    "rate_volatility",
+    "real_credit_growth",
+    "copper"
+  ],
+  "excluded_development_correlation_or_constant": [],
+  "mean": {
+    "usd": 0.013269428030769323,
+    "ipsa": -0.0012900643616786723,
+    "real10": 1.3511425540711945,
+    "bank_spread": 2.276236559139785,
+    "rate_volatility": 0.0372619589783623,
+    "real_credit_growth": 0.04986435235900624,
+    "copper": -0.0020084684764112566
+  },
+  "std": {
+    "usd": 0.042954371078836304,
+    "ipsa": 0.07125633638178794,
+    "real10": 0.7123741644969849,
+    "bank_spread": 1.0149736706571073,
+    "rate_volatility": 0.029158461435782393,
+    "real_credit_growth": 0.028087721774672954,
+    "copper": 0.08845036771343076
+  },
+  "loadings": [
+    0.533213564016552,
+    -0.5468441242842105,
+    -0.037118822192545975,
+    0.17410725290555312,
+    0.31536798766599283,
+    0.288026034375428,
+    -0.45004187836998916
+  ],
+  "train_end": "2020-12-31",
+  "train_n": 93,
+  "explained_variance": 0.35791735309905875,
+  "interpretation": "PC1 oriented toward tighter conditions; adaptation of DT905"
+}

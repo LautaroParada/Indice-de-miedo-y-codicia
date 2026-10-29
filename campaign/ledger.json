@@ -1,0 +1,98 @@
+{
+  "campaign": "mym-bcch-closure-20261029",
+  "contract_sha256": "d943db3890f310b6d92cdd2737a8f5eb637a9781d4be91ea9b22a8799a0f17b0",
+  "resource_usage": {
+    "architectures_registered": 5,
+    "download_batches": 1,
+    "series_requested": 52,
+    "literature_queries_allocated": 20,
+    "permissions_expanded": 0,
+    "literature_queries_used": 19,
+    "sensitivity_scenarios_used": 152,
+    "bootstrap_draws_per_contrast": 400,
+    "registered_economic_ablations": 9,
+    "additional_model_searches": 0
+  },
+  "events": [
+    {
+      "stage": "initial_audit",
+      "result": "Local and remote reference head7dfcedb match. Original checkout clean. Isolated git worktree created because app worktree tool cannot use nested sourceRoot."
+    },
+    {
+      "stage": "contract_frozen",
+      "result": "Criteria fixed before campaign outcomes. Prior exploration known to all researchers. Main comparator periods changed to2020/2021 based on coverage, not outcomes."
+    },
+    {
+      "stage": "download_attempt",
+      "result": "52requests returned unavailable_or_invalid. Public BCCh documentation request without credentials also raised ConnectionError in execution environment. No new network permissions requested. Failed manifest retained in campaign/snapshot/manifest.json."
+    },
+    {
+      "stage": "snapshot_choice",
+      "result": "Use previously downloaded realAPI snapshot2026-10-29T18:21:03.914859+00:00 plus extra batch in manifest; verify all52SHA256. It is not a new download or a historical vintage. Second-snapshot revision comparison cannot be completed."
+    },
+    {
+      "stage": "first_batch",
+      "result": "Weights passed 288/288 coordinate comparisons; aggregate category accuracy 58.8-73.5% failed 90%; stable label coverage 53/69,28/69,6/69; ECB panel3/panel6 corroboration exploratory in 3 targets each."
+    },
+    {
+      "stage": "source_stress",
+      "result": "54 additional cases, total 152. PCA and v2 native reproduction agree within 1.5e-14; no hypothesis threshold changed."
+    },
+    {
+      "stage": "selection_correction",
+      "result": "Full-period M1/M2 removal appeared within 5%. selection-check.json frozen before separated audit; all 3 optional deletions tested unchanged 5% in 2021-2022 and 2023-2026. None passed selection; retain panel6 reference, not validated winner. No new fit/scenario/bootstrap."
+    },
+    {
+      "stage": "reproduction",
+      "result": "Two complete offline runs from 52 verified API series/91144 rows produced identical portable results. New API call remained unavailable; no permissions expanded."
+    },
+    {
+      "stage": "tests",
+      "result": "84 tests pass; Ruff check and format pass. Synthetic tests separate from economic validation."
+    },
+    {
+      "stage": "closure",
+      "result": "B: aggregate fear/greed and generally stable headline not supported. Panel6 retained descriptively with horizon ranges/abstention. Independent risk-preference identification, historical publication/vintages, human utility and novelty remain unestablished."
+    }
+  ],
+  "evaluator_amendments": [
+    {
+      "stage": "pre_results_contract_review",
+      "original_sha256": "40758643c89a90de5e02f5e9d0f4ed6020cad14715fccf26890c60bc93801355",
+      "changes": [
+        "400draws cannot support99.167% tail intervals or confirmatory selection among5architectures. Use95%exploratory intervals; no scientific significance claim.",
+        "Minimal3 retains exact core definitions ofpanel6 for equivalent diagnostic task; cost-only is ablation. No outcomes examined.",
+        "Label coverage denominator includes all contrast months; unavailable120m counts abstention.",
+        "Revision shock confined to2021 rather than uniform full-history shift."
+      ],
+      "applies_to": "all five architectures and all affected comparisons"
+    },
+    {
+      "stage": "implementation_before_completed_results",
+      "changes": [
+        "Rank numerator ignores inf consistently with denominator.",
+        "PCA handles one retained variable and rejects constant design.",
+        "Stability gates enforce N>=36; dynamic gate requires valid transitions and test>=36.",
+        "Spearman implemented as Pearson of average ranks to avoid undeclared SciPy dependency. All affected alternatives rerun."
+      ],
+      "thresholds_changed": false
+    },
+    {
+      "stage": "post_first_batch_selection_audit",
+      "protocol": "selection-check.json",
+      "sha256": "6de1ca219d885a3f757faa95229e5879075aa83fa66a49761bf56bc131cfec0f",
+      "applies_to": "all three optional-family ablations",
+      "prior_information": "2021-2026 aggregate results and some episodes already known; not pristine",
+      "result": "none selected; proposal panel5 rejected"
+    },
+    {
+      "stage": "reproduction_determinism",
+      "changes": [
+        "Stable column iteration replaces unordered sets in sensitivity exports.",
+        "gitattributes preserves byte hashes of snapshot/config/results across Git line-ending settings."
+      ],
+      "numerical_methods_changed": false
+    }
+  ],
+  "status": "closed_with_verdict_B"
+}

@@ -1,0 +1,879 @@
+{
+  "audit_date": "2026-10-29",
+  "scope": "Official documentation, local SDK and 52 catalog candidates; no authenticated requests in this audit.",
+  "web_tool_calls": 7,
+  "data_constraint": "All observations through BCCh API; INE documentation only for CPI publication schedule.",
+  "claims": {
+    "observation_release_date_in_documented_getseries": false,
+    "series_updated_at_equals_observation_release_date": false,
+    "general_as_of_parameter_documented": false,
+    "no_vintages_anywhere_claim_supported": false,
+    "point_in_time_backtest_supported_for_52": false,
+    "historical_calendar_2006_2026_reconstructed": false
+  },
+  "response_contract": {
+    "GetSeries": {
+      "top_level": [
+        "Codigo",
+        "Descripcion",
+        "Series",
+        "SeriesInfos"
+      ],
+      "series": [
+        "seriesId",
+        "descripEsp",
+        "descripIng",
+        "Obs"
+      ],
+      "observation": [
+        "indexDateString",
+        "value",
+        "statusCode"
+      ],
+      "date_semantics": "Reference date, not publication date",
+      "parameters_excluding_credentials": [
+        "function",
+        "timeseries",
+        "firstdate",
+        "lastdate"
+      ]
+    },
+    "SearchSeries": {
+      "items_key": "SeriesInfos",
+      "fields": [
+        "seriesId",
+        "frequencyCode",
+        "spanishTitle",
+        "englishTitle",
+        "firstObservation",
+        "lastObservation",
+        "updatedAt",
+        "createdAt"
+      ],
+      "date_semantics": "Series-level metadata; dates may be absent or ND",
+      "parameters_excluding_credentials": [
+        "function",
+        "frequency"
+      ]
+    },
+    "collector_only": [
+      "retrieved_at_utc",
+      "file_sha256",
+      "request_date_range"
+    ],
+    "unsupported_inferences": [
+      "createdAt is first historical public release",
+      "updatedAt dates every observation",
+      "lastdate means as_of",
+      "statusCode OK means unrevised final value"
+    ]
+  },
+  "catalog_vintages": {
+    "detection_pattern": "20\\d{2}(ENE|FEB|MAR|ABR|MAY|JUN|JUL|AGO|SEP|OCT|NOV|DIC)\\.",
+    "detected_codes": 869,
+    "families": [
+      "COG",
+      "CPR",
+      "CTO",
+      "DDI",
+      "FKF",
+      "IBS",
+      "PIB",
+      "XBS"
+    ],
+    "overlap_selected_codes": 0,
+    "example": "F032.PIB.FLU.R.CLP.2003.Z.Z.2007MAR.T",
+    "scope_limit": "Pattern audit, not exhaustive discovery of every versioning mechanism. Alternative base-year series are not automatically vintages."
+  },
+  "sensitivity_contract": {
+    "scenarios_months": [
+      0,
+      1,
+      2
+    ],
+    "monthly_anchor": "Reference month end",
+    "quarterly_anchor": "Reference quarter end",
+    "daily_aggregation": "Closed months only",
+    "composite_available_at": "Maximum availability of its inputs",
+    "global_shift_grid_is_hypothetical": true,
+    "family_lags_are_alternatives_not_additional_shifts": true,
+    "vintage_values": "Latest retrieved values in all scenarios",
+    "comparison": "Same evaluation intersection, horizon and fitting procedure across lags",
+    "not_claims": [
+      "Real-time backtest",
+      "Revision-free estimates",
+      "Universal upper bound on publication delay"
+    ]
+  },
+  "snapshot_comparison_contract": {
+    "retain": [
+      "Both immutable files",
+      "SHA256 hashes",
+      "Retrieval UTC timestamps",
+      "Status codes"
+    ],
+    "classify": [
+      "New observations",
+      "Revised values",
+      "Changed statuses",
+      "Removed observations"
+    ],
+    "equal_snapshots_mean": "Unchanged between these two retrievals only",
+    "changed_snapshots_mean": "Change occurred within the retrieval interval; exact publication timestamp remains unknown",
+    "results_in_this_file": null
+  },
+  "family_evidence": {
+    "monetary_financial_monthly": {
+      "aliases": [
+        "bank_spread",
+        "commercial_rate",
+        "interbank",
+        "commercial_credit",
+        "m1",
+        "m2",
+        "term_deposits"
+      ],
+      "rule": "Current family policy: provisional release day 7 of following month or next business day; final version with lag of two months and 23 days; exceptional revisions possible.",
+      "illustrative_month_lag": 1,
+      "status": "Current family rule, not historical release dates for every code",
+      "source_ids": [
+        "monetary_calendar"
+      ]
+    },
+    "credit_survey_quarterly": {
+      "alias_prefix": "ecb_",
+      "rule": "Release in January, April, July and October. Verified dates in 2026: January 14, April 15, July 15, October 14.",
+      "illustrative_month_lag": 1,
+      "status": "Lag from quarter END, not encoded first day",
+      "source_ids": [
+        "survey_calendar",
+        "ecb_page"
+      ]
+    },
+    "expectations": {
+      "aliases": [
+        "eee_inflation12",
+        "eee_inflation24",
+        "eee_fx12",
+        "eee_tpm12",
+        "eof_financial_conditions"
+      ],
+      "rule": "EEE released during survey month; EOF follows events around monetary policy meetings.",
+      "illustrative_month_lag": 0,
+      "status": "Calendar examples, not complete history or API ingestion timestamps",
+      "source_ids": [
+        "survey_calendar"
+      ]
+    },
+    "activity": {
+      "aliases": [
+        "imacec"
+      ],
+      "rule": "Official FAQ: 31 days after month end; August 2026 appears on October 1 calendar.",
+      "illustrative_month_lag": 2,
+      "status": "Conservative month-end assumption based on current rule",
+      "source_ids": [
+        "imacec_faq",
+        "general_calendar"
+      ]
+    },
+    "prices": {
+      "aliases": [
+        "cpi"
+      ],
+      "rule": "September 2026 CPI published October 8 by INE.",
+      "illustrative_month_lag": 1,
+      "status": "Producer release example, not BDE ingestion timestamp",
+      "source_ids": [
+        "ine_calendar"
+      ]
+    },
+    "derivatives_monthly": {
+      "aliases": [
+        "ndf_nonresident",
+        "spot_volume"
+      ],
+      "rule": "September 2026 derivatives report on October 23.",
+      "illustrative_month_lag": 1,
+      "status": "Family example; does not establish release time for each series or daily positions",
+      "source_ids": [
+        "general_calendar"
+      ]
+    },
+    "unverified_by_code": {
+      "aliases": [
+        "usd",
+        "copper",
+        "nominal10",
+        "nominal2",
+        "nominal5",
+        "real2",
+        "real5",
+        "real10",
+        "tpm",
+        "idie",
+        "ipsa",
+        "igpa",
+        "market_cap",
+        "turnover_value",
+        "price_earnings",
+        "price_book",
+        "ipec",
+        "ipec_expectations",
+        "imce",
+        "imce_nonmining",
+        "icc_investments",
+        "arrears",
+        "spot_position",
+        "derivatives_nonresident",
+        "derivatives_pensions"
+      ],
+      "status": "No per-code historical release schedule reconstructed; use explicit 0/1/2 month sensitivity scenarios",
+      "illustrative_month_lag": null,
+      "source_ids": []
+    }
+  },
+  "reserved_targets": [
+    {
+      "alias": "ecb_supply_sme",
+      "code": "F089.ECB.IND.COMEA2.T",
+      "label": "SME lending standards",
+      "eligible_against": "Monthly panel excluding all ECB inputs",
+      "invalid_against": "Its five response shares, their balance or other derived summaries"
+    },
+    {
+      "alias": "ecb_demand_sme",
+      "code": "F089.ECB.IND.COMDNC2.T",
+      "label": "SME credit demand",
+      "eligible_against": "Panel excluding this target and its transformations"
+    },
+    {
+      "alias": "ecb_supply_households",
+      "code": "F089.ECB.IND.CONSEA1.T",
+      "label": "CONSUMER lending standards, not all household credit",
+      "eligible_against": "Panel excluding this target and its transformations"
+    },
+    {
+      "alias": "ecb_demand_households",
+      "code": "F089.ECB.IND.CONSDNC1.T",
+      "label": "CONSUMER credit demand, not all household credit",
+      "eligible_against": "Panel excluding this target and its transformations"
+    }
+  ],
+  "target_common_constraints": [
+    "One observation per quarter",
+    "Keep out of factor selection and weight optimization",
+    "Same survey and overlapping informants: not four independent replications",
+    "Demand strength may represent refinancing or liquidity need; not automatically greed"
+  ],
+  "controls": [
+    {
+      "alias": "imacec",
+      "code": "F032.IMC.IND.Z.Z.EP18.Z.Z.0.M",
+      "transform": "100*(log(x_t)-log(x_t-12))",
+      "role": "Activity control",
+      "seasonally_adjusted": false
+    },
+    {
+      "alias": "cpi",
+      "code": "F074.IPC.IND.Z.EP23.C.M",
+      "transform": "100*(log(x_t)-log(x_t-12))",
+      "role": "Inflation control",
+      "not_independent_of": "Real-credit predictors deflated by the same CPI"
+    }
+  ],
+  "unit_cautions": [
+    {
+      "aliases": [
+        "commercial_credit"
+      ],
+      "issue": "Nominal stock, billions of CLP, individual balance sheets; not flow or SME-only lending. Deflate before computing real growth."
+    },
+    {
+      "aliases": [
+        "arrears"
+      ],
+      "issue": "Catalog unit Indice conflicts with related IEF percentage presentation. Exact code definition and consolidation mapping unresolved. Not percentage of borrowers."
+    },
+    {
+      "aliases": [
+        "price_book",
+        "price_earnings"
+      ],
+      "issue": "Official metadata labels porcentaje de utilidad; do not assert multiples in times or fair-value thresholds."
+    },
+    {
+      "aliases": [
+        "market_cap",
+        "turnover_value"
+      ],
+      "issue": "Both millions of CLP; denominator is stock and numerator monthly flow. Ratio is not number of trades."
+    },
+    {
+      "aliases": [
+        "bank_spread"
+      ],
+      "issue": "Gross banking spread, 30-89 days; not sovereign default spread."
+    },
+    {
+      "aliases": [
+        "nominal10",
+        "nominal2",
+        "nominal5",
+        "real2",
+        "real5",
+        "real10",
+        "tpm",
+        "interbank",
+        "commercial_rate"
+      ],
+      "issue": "Rates in percent; differences in percentage points, multiply by 100 for basis points. Compare matching nominal-real maturities."
+    },
+    {
+      "aliases": [
+        "spot_position",
+        "ndf_nonresident",
+        "derivatives_nonresident",
+        "derivatives_pensions",
+        "spot_volume"
+      ],
+      "issue": "Millions of USD; stock/flow, net/gross and counterparty orientation differ. No speculative sign established."
+    },
+    {
+      "aliases": [
+        "eee_inflation12",
+        "eee_fx12",
+        "eee_tpm12"
+      ],
+      "issue": "Catalog horizon is 11 months; alias12 is shorthand. Medians do not reveal dispersion."
+    },
+    {
+      "aliases": [
+        "eee_inflation24"
+      ],
+      "issue": "Catalog horizon is 23 months; cannot directly subtract five-year inflation compensation."
+    },
+    {
+      "aliases": [
+        "eof_financial_conditions"
+      ],
+      "issue": "TPM-incidence factor, not official financial conditions index; event frequency despite DAILY metadata."
+    },
+    {
+      "aliases": [
+        "m1",
+        "m2",
+        "term_deposits"
+      ],
+      "issue": "Nested monetary aggregates/components; not independent votes; ratios do not uniquely identify risk appetite."
+    },
+    {
+      "aliases": [
+        "ecb_supply_households",
+        "ecb_demand_households"
+      ],
+      "issue": "Consumption only, not all household or mortgage credit."
+    },
+    {
+      "aliases": [
+        "ecb_supply_sme"
+      ],
+      "issue": "Balance is an algebraic function of five response shares; not independent validation of them."
+    },
+    {
+      "aliases": [
+        "imacec"
+      ],
+      "issue": "Original linked series, 2018 reference; not seasonally adjusted."
+    },
+    {
+      "aliases": [
+        "cpi"
+      ],
+      "issue": "General linked CPI from 2009-12; 12-month real credit growth starts no earlier than 2010-12."
+    }
+  ],
+  "sources": [
+    {
+      "id": "api_documentation",
+      "url": "https://si3.bcentral.cl/estadisticas/Principal1/Web_Services/documentacion.html",
+      "access": "full_text"
+    },
+    {
+      "id": "monetary_calendar",
+      "url": "https://www.bcentral.cl/calendario-estadistico?categoria=Estadisticas+Monetarias&nowYear=2026&p_p_id=bcentral_calendario_global_CalendarioGlobalPortlet_INSTANCE_gvZr3D7oZBKa&p_p_lifecycle=0&p_p_mode=view&p_p_state=normal",
+      "access": "full_text"
+    },
+    {
+      "id": "survey_calendar",
+      "url": "https://www.bcentral.cl/en/content/-/detalle/encuestas-de-expectativas-2026",
+      "access": "full_text"
+    },
+    {
+      "id": "ecb_page",
+      "url": "https://www.bcentral.cl/en/web/banco-central/areas/economic-surveys/banking-credit-survey",
+      "access": "indexed_official_text"
+    },
+    {
+      "id": "imacec_faq",
+      "url": "https://www.bcentral.cl/es/web/banco-central/contenido/-/details/preguntas-imacec-preguntas-frecuentes-estadisticas-1",
+      "access": "full_text"
+    },
+    {
+      "id": "ine_calendar",
+      "url": "https://ineportaldpr.ine.gob.cl/inicio/agendaestadistica/",
+      "access": "indexed_official_text"
+    },
+    {
+      "id": "general_calendar",
+      "url": "https://www.bcentral.cl/es/calendario-estadistico",
+      "access": "indexed_official_text_direct_open_timed_out"
+    },
+    {
+      "id": "ief_2026",
+      "url": "https://www.bcentral.cl/documents/d/banco-central/informe-de-estabilidad-financiera-primer-semestre-2026-pdf?download=true",
+      "access": "indexed_official_text"
+    },
+    {
+      "id": "market_metadata",
+      "url": "https://si3.bcentral.cl/Search/Buscar/Index/?or=pop&pageID=1&st=mensual%7D&t=Mercado+Capitales+Mensual%7CMercado+de+Capitales",
+      "access": "indexed_official_text"
+    }
+  ],
+  "unresolved": [
+    "Publication timestamps for each observation",
+    "Historical release calendars",
+    "Revisions before first stored snapshot",
+    "Exact mora code definition/consolidation",
+    "Valuation unit semantics",
+    "Counterparty sign of derivative positions"
+  ],
+  "series": [
+    {
+      "alias": "usd",
+      "code": "F073.TCO.PRE.Z.D",
+      "frequency": "Diaria",
+      "name": "Chile: Peso chileno (observado)",
+      "unit": "Pesos por Dólar",
+      "table": "Paridades de monedas extranjeras (moneda/dólar de los Estados Unidos de América)"
+    },
+    {
+      "alias": "copper",
+      "code": "F019.PPB.PRE.100.D",
+      "frequency": "Diaria",
+      "name": "Cobre refinado BML (dólares/libra)",
+      "unit": "Dólar/Libra",
+      "table": "Precios de productos básicos"
+    },
+    {
+      "alias": "nominal10",
+      "code": "F022.BCLP.TIS.AN10.NO.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en pesos a 10 años (BCP,BTP)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario , bonos , en pesos (porcentaje) "
+    },
+    {
+      "alias": "idie",
+      "code": "F029.IDIE.IND.TOT.D",
+      "frequency": "Diaria",
+      "name": "Índice diario de incertidumbre económica",
+      "unit": "Índice",
+      "table": "Índice diario de incertidumbre económica"
+    },
+    {
+      "alias": "ipsa",
+      "code": "F013.IBC.IND.N.7.LAC.CL.CLP.BLO.M",
+      "frequency": "Mensual",
+      "name": "Chile: IPSA",
+      "unit": "Índice",
+      "table": "Índice de bolsas de comercio"
+    },
+    {
+      "alias": "igpa",
+      "code": "F013.IBG.IND.N.7.LAC.CL.CLP.BLO.M",
+      "frequency": "Mensual",
+      "name": "IGPA",
+      "unit": "Índice",
+      "table": "Indicadores bursátiles"
+    },
+    {
+      "alias": "market_cap",
+      "code": "F022.MB2.STO.Z.Z.Z.M",
+      "frequency": "Mensual",
+      "name": "Capitalización bursátil - Bolsa de Santiago (millones de pesos)",
+      "unit": "Millones de pesos",
+      "table": "Mercado bursátil - Bolsa de Santiago"
+    },
+    {
+      "alias": "turnover_value",
+      "code": "F022.MB4.FLU.Z.Z.Z.M",
+      "frequency": "Mensual",
+      "name": "Monto transacción  - Bolsa de Santiago (millones de pesos)",
+      "unit": "Millones de pesos",
+      "table": "Mercado bursátil - Bolsa de Santiago"
+    },
+    {
+      "alias": "price_earnings",
+      "code": "F022.MB5.FLU.Z.Z.Z.M",
+      "frequency": "Mensual",
+      "name": "RPU - Bolsa de Santiago (porcentaje de utilidad)",
+      "unit": "Porcentaje",
+      "table": "Mercado bursátil - Bolsa de Santiago"
+    },
+    {
+      "alias": "price_book",
+      "code": "F022.MB6.FLU.Z.Z.Z.M",
+      "frequency": "Mensual",
+      "name": "Bolsa/Libro  - Bolsa de Santiago (porcentaje de utilidad)",
+      "unit": "Porcentaje",
+      "table": "Mercado bursátil - Bolsa de Santiago"
+    },
+    {
+      "alias": "ipec",
+      "code": "F089.IPE.IND.75M2.M",
+      "frequency": "Mensual",
+      "name": "Índice de percepción de la economía",
+      "unit": "Índice",
+      "table": "Índice de percepción de la economía (IPEC)"
+    },
+    {
+      "alias": "ipec_expectations",
+      "code": "F089.IPE.IND.72M2.M",
+      "frequency": "Mensual",
+      "name": "Situación económica, del país a 12 meses",
+      "unit": "Índice",
+      "table": "Índice de percepción de la economía (IPEC)"
+    },
+    {
+      "alias": "imce",
+      "code": "G089.IME.IND.A0.M",
+      "frequency": "Mensual",
+      "name": "IMCE: Total",
+      "unit": "Índice",
+      "table": "Índice mensual de confianza empresarial (IMCE), total general e índices de difusión sectoriales "
+    },
+    {
+      "alias": "imce_nonmining",
+      "code": "G089.IME.IND.A04.M",
+      "frequency": "Mensual",
+      "name": "IMCE:  Sin Minería",
+      "unit": "Índice",
+      "table": "Índice mensual de confianza empresarial (IMCE), total general e índices de difusión sectoriales "
+    },
+    {
+      "alias": "icc_investments",
+      "code": "F089.ICC.IND.B4M.M",
+      "frequency": "Mensual",
+      "name": "Subíndice: Inversiones (mensual)",
+      "unit": "Índice",
+      "table": "Índice de Confianza del Consumidor: Chile (IPSOS ICC), Mensual"
+    },
+    {
+      "alias": "bank_spread",
+      "code": "F022.SBR.TIN.D089.NO.Z.M",
+      "frequency": "Mensual",
+      "name": "Spread bruto, 30 a 89 días",
+      "unit": "Porcentaje",
+      "table": "Tasas spread promedio del sistema financiero (porcentaje)"
+    },
+    {
+      "alias": "commercial_rate",
+      "code": "F022.COM.TIP.Z.NO.Z.M",
+      "frequency": "Mensual",
+      "name": "Comerciales total - tasa",
+      "unit": "Porcentaje",
+      "table": "Tasa y flujo de colocación promedio comerciales por tipo producto (tasas anuales en pesos, miles de millones de pesos)"
+    },
+    {
+      "alias": "interbank",
+      "code": "F022.TIB.TIP.D001.NO.Z.M",
+      "frequency": "Mensual",
+      "name": "Tasa de interés promedio interbancaria",
+      "unit": "Porcentaje",
+      "table": "Tasa de interés interbancaria a 1 día, promedio del sistema financiero  (porcentaje anual)"
+    },
+    {
+      "alias": "commercial_credit",
+      "code": "F022.COMBI.STO.Z.Z.CLP.M",
+      "frequency": "Mensual",
+      "name": "Comerciales",
+      "unit": "Miles de millones de pesos",
+      "table": "Colocaciones por tipo de deudor, balances individuales, saldos (miles de millones de pesos)"
+    },
+    {
+      "alias": "arrears",
+      "code": "F022.IM4.IND.Z.Z.Z.M",
+      "frequency": "Mensual",
+      "name": "Total",
+      "unit": "Índice",
+      "table": "Índice de mora del sistema"
+    },
+    {
+      "alias": "ecb_supply_sme",
+      "code": "F089.ECB.IND.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    },
+    {
+      "alias": "ecb_demand_sme",
+      "code": "F089.ECB.IND.COMDNC2.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Demanda por nuevos créditos, Pymes"
+    },
+    {
+      "alias": "m1",
+      "code": "F021.M1.STO.N.CLP.5.M",
+      "frequency": "Mensual",
+      "name": "M1",
+      "unit": "Miles de millones de pesos",
+      "table": "Agregados monetarios y sus componentes - saldos (miles de millones de pesos) "
+    },
+    {
+      "alias": "m2",
+      "code": "F021.M2.STO.N.CLP.5.M",
+      "frequency": "Mensual",
+      "name": "M2",
+      "unit": "Miles de millones de pesos",
+      "table": "Agregados monetarios y sus componentes - saldos (miles de millones de pesos) "
+    },
+    {
+      "alias": "term_deposits",
+      "code": "F021.DPP.STO.N.CLP.5.M",
+      "frequency": "Mensual",
+      "name": "Depósitos a plazo",
+      "unit": "Miles de millones de pesos",
+      "table": "Agregados monetarios y sus componentes - saldos (miles de millones de pesos) "
+    },
+    {
+      "alias": "nominal2",
+      "code": "F022.BCLP.TIS.AN02.NO.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en pesos a 2 años (BCP,BTP)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario , bonos , en pesos (porcentaje) "
+    },
+    {
+      "alias": "nominal5",
+      "code": "F022.BCLP.TIS.AN05.NO.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en pesos a 5 años (BCP,BTP)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario , bonos , en pesos (porcentaje) "
+    },
+    {
+      "alias": "real5",
+      "code": "F022.BUF.TIS.AN05.UF.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en UF a 5 años (BCU, BTU)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario, bonos, en UF (porcentaje) "
+    },
+    {
+      "alias": "real10",
+      "code": "F022.BUF.TIS.AN10.UF.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en UF a 10 años (BCU, BTU)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario, bonos, en UF (porcentaje) "
+    },
+    {
+      "alias": "tpm",
+      "code": "F022.TPM.TIN.D001.NO.Z.D",
+      "frequency": "Diaria",
+      "name": "Chile",
+      "unit": "Porcentaje",
+      "table": "Tasas de política monetaria"
+    },
+    {
+      "alias": "eee_inflation12",
+      "code": "F089.IPC.V12.14.M",
+      "frequency": "Mensual",
+      "name": "En 11 meses (variación 12 meses)",
+      "unit": "Porcentaje",
+      "table": "Expectativas de inflación (variaciones IPC en porcentaje) "
+    },
+    {
+      "alias": "eee_inflation24",
+      "code": "F089.IPC.V12.15.M",
+      "frequency": "Mensual",
+      "name": "En 23 meses (variación 12 meses)",
+      "unit": "Porcentaje",
+      "table": "Expectativas de inflación (variaciones IPC en porcentaje) "
+    },
+    {
+      "alias": "eee_fx12",
+      "code": "F089.TCN.PRE.14.M",
+      "frequency": "Mensual",
+      "name": "Dentro de 11 meses",
+      "unit": "Pesos",
+      "table": "Expectativas tipo de Cambio ($ por US$1)"
+    },
+    {
+      "alias": "eee_tpm12",
+      "code": "F089.TPM.TAS.14.M",
+      "frequency": "Mensual",
+      "name": "Dentro de 11 meses",
+      "unit": "Porcentaje",
+      "table": "Expectativas de la tasa de política monetaria, encuesta expectativas económicas, mediana (porcentaje)"
+    },
+    {
+      "alias": "ndf_nonresident",
+      "code": "F099.DER.STO.Z.40.N.NR.NET.NDF.MMUSD.CLPUSD.C.Z.0.M",
+      "frequency": "Mensual",
+      "name": "Monto vigente neto, total, USD-CLP",
+      "unit": "Millones de dólares USA",
+      "table": "Forward por compensación (NDF) montos vigentes netos de bancos residentes con no residentes, datos mensuales (USD-CLP) (millones de dólares)"
+    },
+    {
+      "alias": "spot_position",
+      "code": "F099.SPT.STO.Z.MCF.Z.Z.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "frequency": "Diaria",
+      "name": "Posición neta spot MCF",
+      "unit": "Millones de dólares USA",
+      "table": "Spot posiciones netas, datos diarios (peso chileno contra moneda extranjera) (millones de dólares)"
+    },
+    {
+      "alias": "derivatives_nonresident",
+      "code": "F099.DER.STO.Z.40.N.NR.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "frequency": "Diaria",
+      "name": "No residentes",
+      "unit": "Millones de dólares USA",
+      "table": "Derivados de monedas montos vigentes netos de bancos residentes, datos diarios (moneda nacional contra moneda extranjera) (millones de dólares)"
+    },
+    {
+      "alias": "derivatives_pensions",
+      "code": "F099.DER.STO.Z.40.R.42.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "frequency": "Diaria",
+      "name": "Fondos de pensiones",
+      "unit": "Millones de dólares USA",
+      "table": "Derivados de monedas montos vigentes netos de bancos residentes, datos diarios (moneda nacional contra moneda extranjera) (millones de dólares)"
+    },
+    {
+      "alias": "spot_volume",
+      "code": "F099.SPT.FLU.Z.40.Z.Z.TOT.Z.MMUSD.CLPUSD.Z.Z.0.M",
+      "frequency": "Mensual",
+      "name": "Monto transado total, total, USD-CLP",
+      "unit": "Millones de dólares USA",
+      "table": "Spot montos transados de bancos residentes, datos mensuales (USD-CLP) (millones de dólares)"
+    },
+    {
+      "alias": "imacec",
+      "code": "F032.IMC.IND.Z.Z.EP18.Z.Z.0.M",
+      "frequency": "Mensual",
+      "name": "Imacec",
+      "unit": "Índice",
+      "table": "Indicador mensual de actividad económica, Imacec, volumen a precios del año anterior encadenado, series empalmadas (promedio 2018=100)"
+    },
+    {
+      "alias": "ecb_supply_large",
+      "code": "F089.ECB.IND.COMEA1.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Grandes empresas"
+    },
+    {
+      "alias": "ecb_demand_large",
+      "code": "F089.ECB.IND.COMDNC1.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Demanda por nuevos créditos, Grandes empresas"
+    },
+    {
+      "alias": "ecb_supply_households",
+      "code": "F089.ECB.IND.CONSEA1.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de personas: créditos de consumo e hipotecarios, Estándares de aprobación, Consumo"
+    },
+    {
+      "alias": "ecb_demand_households",
+      "code": "F089.ECB.IND.CONSDNC1.T",
+      "frequency": "Trimestral",
+      "name": "Indicador",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de personas: créditos de consumo e hipotecarios, Demanda por nuevos créditos, Consumo"
+    },
+    {
+      "alias": "eof_financial_conditions",
+      "code": "F089.EOF.FI_TPM_CFL.1A.D",
+      "frequency": "Diaria",
+      "name": "Factores de incidencia en TPM: Condiciones financieras locales",
+      "unit": "Factor",
+      "table": "Evolución Encuesta de Operadores Financieros (EOF), Expectativas de Tasa de Política Monetaria, mediana"
+    },
+    {
+      "alias": "real2",
+      "code": "F022.BUF.TIS.AN02.UF.Z.D",
+      "frequency": "Diaria",
+      "name": "Bonos en UF a 2 años (BCU, BTU)",
+      "unit": "Porcentaje",
+      "table": "Tasas de interés mercado secundario, bonos, en UF (porcentaje) "
+    },
+    {
+      "alias": "cpi",
+      "code": "F074.IPC.IND.Z.EP23.C.M",
+      "frequency": "Mensual",
+      "name": "Índice IPC General",
+      "unit": "Índice",
+      "table": "IPC serie empalmada diciembre 2009 a la fecha"
+    },
+    {
+      "alias": "ecb_supply_sme_less",
+      "code": "F089.ECB.MNRES.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Menos restrictivos",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    },
+    {
+      "alias": "ecb_supply_sme_moderately_less",
+      "code": "F089.ECB.MMNRES.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Moderadamente menos restrictivos",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    },
+    {
+      "alias": "ecb_supply_sme_unchanged",
+      "code": "F089.ECB.SCAM.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Sin Cambios",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    },
+    {
+      "alias": "ecb_supply_sme_moderately_more",
+      "code": "F089.ECB.MMSRES.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Moderadamente más restrictivos",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    },
+    {
+      "alias": "ecb_supply_sme_more",
+      "code": "F089.ECB.MSRES.COMEA2.T",
+      "frequency": "Trimestral",
+      "name": "Más restrictivos",
+      "unit": "Porcentaje de respuestas",
+      "table": "Banca de empresas: créditos comerciales, Estándares de aprobación, Pymes"
+    }
+  ],
+  "sdk_evidence": [
+    {
+      "file": "src/bcch/models.py",
+      "sha256": "a3668f5961932a27677012bb00ade4fdfdfdbea83845dd928509581ab09d296a"
+    },
+    {
+      "file": "src/bcch/client.py",
+      "sha256": "592a59abb27807380ef20bbc55b0f95ba7a0fa497cc713af098642923902435a"
+    }
+  ]
+}

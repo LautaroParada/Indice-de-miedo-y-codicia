@@ -1,151 +1,160 @@
 ![MyM Ingenierías: herramientas abiertas para trabajar con datos](docs/assets/portada.svg)
 
-# Miedo, codicia y condiciones financieras de Chile
+# Diagnóstico financiero de Chile
 
-**Investigación abierta y herramientas gratuitas de [MyM Ingenierías](https://mymingenierias.com), con datos exclusivamente del Banco Central de Chile.**
+**Herramienta gratuita de [MyM Ingenierías](https://mymingenierias.com), con datos exclusivamente de la API del Banco Central de Chile.**
 
-Una misma cifra agregada puede ocultar mercados que suben mientras cae la confianza,
-o bancos que flexibilizan y restringen crédito simultáneamente. Este proyecto estudia
-esas diferencias con precios, participación bursátil, encuestas, crédito, liquidez y
-posicionamiento. Su propósito es ayudar a entender qué cambió y dónde, con fuentes y
-cálculos revisables.
+Un promedio puede ocultar diferencias relevantes: precios que avanzan con confianza débil,
+o crédito con respuestas opuestas entre bancos. Este repositorio permite examinar qué
+cambió, en qué componentes y con qué respaldo. Incluye datos de referencia, cálculos,
+figuras y una campaña reproducible de evaluación.
 
-**Estado:** prototipo de investigación. La versión de cuatro fuentes se conserva como
-comparador; no se presenta como selección definitiva ni como medición validada de
-emociones. La herramienta no ofrece recomendaciones de inversión ni pronósticos.
+**Resultado del cierre metodológico: B — no respaldado para un índice agregado de
+miedo/codicia ni para un diagnóstico generalmente estable en un único titular.**
+Se conserva la referencia descriptiva de seis perfiles, con rangos y abstenciones.
+No se presenta como medición de emociones, indicador validado de apetito por riesgo,
+recomendación de inversión ni pronóstico financiero.
 
-[Resultados de la segunda investigación](docs/segunda-investigacion.md) ·
-[Inventario de 52 candidatos](research/candidates.json) ·
-[Metodología de los experimentos](research/protocol.md) ·
-[Bibliografía y contribución posible](docs/literatura-ampliada.md)
+[Veredicto y cifras](docs/cierre-veredicto.md) · [Matriz de afirmaciones](docs/cierre-matriz.md) ·
+[Qué mide cada componente](docs/cierre-definiciones.md) · [Reproducir](#reproducir-la-campaña)
 
-## Lo que aporta esta revisión
+## Qué permite consultar
 
-Se censaron los 20 capítulos del catálogo BDE y se seleccionaron candidatos por mecanismo,
-unidad, frecuencia y cobertura. **Las 52 series consultadas respondieron correctamente.**
-El catálogo completo contiene 25.291 códigos; no todos son pertinentes para sentimiento
-financiero y una variante de plazo no constituye automáticamente información nueva.
+| Perfil | Pregunta que ayuda a examinar | Límite de interpretación |
+|---|---|---|
+| Mercado | ¿Cómo cambiaron el momentum y la valoración bursátil? | Precios altos no identifican codicia |
+| Confianza | ¿Cómo se ubican las respuestas de hogares y empresas respecto de su historia? | Confianza declarada no equivale a preferencia por riesgo |
+| Presiones e incertidumbre | ¿Qué ocurrió con spreads, fondeo, variabilidad de tasas e IDIE? | Son mecanismos diferentes; no identifican una causa común |
+| Participación | ¿Cómo cambió la rotación bursátil? | Mayor actividad puede acompañar alzas o caídas |
+| Crédito real | ¿Cómo evolucionaron las colocaciones comerciales descontando el IPC? | Mezcla oferta, demanda y composición |
+| Composición monetaria | ¿Qué proporción de M2 corresponde a M1? | No identifica por sí sola una preferencia por seguridad |
 
-| Dimensión | Información que permite examinar |
-|---|---|
-| Mercado | Momentum de acciones y valoración relativa |
-| Confianza | Percepción de hogares y empresas, con sus diferencias |
-| Participación | Transacciones en relación con capitalización bursátil |
-| Financiamiento | Spread bancario, fondeo, crédito real y estándares de aprobación |
-| Liquidez y posicionamiento | Composición monetaria y posiciones por contraparte |
-| Incertidumbre y expectativas | IDIE, curvas nominales/reales y expectativas declaradas |
+Los tres primeros perfiles forman la lectura central; los tres últimos aportan contexto.
+Cada puntaje permite consultar su transformación, componentes y pesos. Las encuestas
+trimestrales de crédito conservan su frecuencia y muestran sus respuestas desagregadas.
+El archivo de metodología identifica las reglas y los límites: [referencia congelada](campaign/results/methodology.json).
 
-La información se conserva en su frecuencia útil: un núcleo mensual amplio, contexto
-trimestral de crédito y un comparador diario acotado. No se inventan observaciones
-diarias a partir de encuestas mensuales.
+## Qué pasó al ponerlo a prueba
 
-![Mercado, confianza, fricción y diferencias entre perfiles](docs/assets/research-panel.svg)
+Se compararon cinco arquitecturas, nueve ablaciones económicas y **152 escenarios de
+sensibilidad**, con criterios principales fijados antes del primer lote. El control
+de simplificación se registró después de conocer resultados agregados y se declara como
+corrección posterior. Todos los investigadores conocían la exploración anterior:
+se trata de contraste retrospectivo.
 
-*Historia retrospectiva con datos revisables del BCCh. Último mes completo: septiembre
-de 2026. Cada perfil tiene una interpretación distinta; alto no significa siempre mejor.*
+- Los agregados recuperaron entre **58,8% y 73,5%** de las categorías de los perfiles,
+  por debajo del mínimo de 90%. Mostrar los componentes conserva esa información;
+  no crea información nueva ni valida su significado económico.
+- Cambiar moderadamente los pesos produjo diferencias acotadas. Cambiar horizonte
+  histórico o retrasar datos produjo cambios de interpretación mucho mayores.
+- La asociación con seis medidas de crédito reservadas mostró aportes distintos según
+  objetivo y periodo. No hubo un ganador uniforme.
+- SINDy no superó el control previo de tamaño de muestra e identificación; no se ajustó.
+- Una simplificación a cinco perfiles parecía cumplir el margen de 5% al mirar todo el
+  contraste. Al separar selección 2021–2022 y comprobación 2023–2026 dejó de cumplirlo.
+  Se conserva el panel completo como referencia, sin forzar un ganador validado.
 
-## Más información, sin contar dos veces lo mismo
+![Comparación económica con objetivos de crédito reservados](docs/assets/closure-comparison.svg)
 
-La investigación mide redundancia y comprueba su estabilidad temporal. IPSA e IGPA son
-casi duplicados en desarrollo; la participación bursátil aporta una lectura mucho menos
-correlacionada con mercado y confianza en el periodo posterior. Los resultados completos
-incluyen muestras, transformaciones, pares redundantes y pruebas de reconstrucción.
+*Reducción de error frente a controles de ciclo, inflación y política monetaria.
+Intervalos exploratorios; 21 trimestres de ajuste y 22 de contraste. No es una prueba de emociones.*
 
-![Correlaciones posteriores entre mecanismos candidatos](docs/assets/research-correlations.svg)
+## Cuándo la herramienta se abstiene
 
-La ortogonalidad matemática no es suficiente: componentes PCA no correlacionados al
-ajustarse alcanzan correlaciones de hasta 0,85 después. Por eso el producto conserva
-nombres económicos y muestra dependencias, en lugar de prometer factores independientes.
+Una etiqueta firme exige acuerdo entre referencias de 36, 60 y 120 meses, con una
+amplitud máxima de 20 puntos. Si falta historia o cambia la lectura entre horizontes,
+se conserva el dato y se informa la sensibilidad; no se fuerza una etiqueta.
 
-Otro resultado concreto surge de la encuesta de crédito: en 2009-T4 el saldo neto
-pyme fue cero con 10,53% de bancos flexibilizando y 10,53% restringiendo. En 2013-T4
-también fue cero, pero 100% mantuvo estándares. La
-[descomposición de respuestas](docs/credito-distribuciones.md) hace visible esa diferencia.
-Es una lectura del dato, no una fórmula nueva ni una predicción de crisis.
+![Cobertura de etiquetas y sensibilidad al horizonte histórico](docs/assets/closure-stability.svg)
 
-## Reproducir la investigación
+La etiqueta cumplió esa regla en **53 de 69 meses para mercado, 28 para confianza y 6
+para presiones**. Esto impide promocionar un titular estable general. Los rangos son
+escenarios de referencia, no intervalos probabilísticos de confianza.
 
-Requisitos: Python 3.11+, Git y acceso habilitado a la
-[API BDE del BCCh](https://si3.bcentral.cl/estadisticas/Principal1/Web_Services/acceso_api.html).
+## Reproducir la campaña
+
+Requisitos: Python 3.11+ y Git. Desde la raíz del repositorio:
 
 ```bash
-git clone https://github.com/LautaroParada/Indice-de-miedo-y-codicia.git
-cd Indice-de-miedo-y-codicia
 python -m venv .venv
 ```
 
 Activa el entorno con `.\.venv\Scripts\Activate.ps1` en PowerShell o
-`source .venv/bin/activate` en macOS/Linux e instala:
+`source .venv/bin/activate` en macOS/Linux. Luego:
 
 ```bash
-python -m pip install -e .
+python -m pip install -e ".[dev]"
+python -m campaign.reproduce --output outputs/closure-run
+python -m campaign.reproduce --output outputs/closure-replay --compare-to outputs/closure-run
+python -m pytest
 ```
 
-Copia `.env.example` a `.env` y completa allí `BCCH_API_KEY`. La plantilla contiene
-la variable vacía; el archivo local está excluido de Git. El entorno del proceso tiene
-prioridad. Nunca pegues el token en comandos, notebooks o incidencias.
+El pipeline verifica los hashes de las **52 series y 91.144 filas del snapshot BCCh**,
+calcula transformaciones y comparadores, ejecuta los experimentos y produce informe,
+matriz, metodología, trazabilidad y figuras. La segunda ejecución compara los resultados.
+El snapshot incluido permite reproducir esta campaña sin credenciales ni consultas nuevas.
+
+La referencia original permanece identificada por el commit
+`7dfcedbad4a08fd0b4d51f4ea57df1997d69fed5`. El protocolo, sus correcciones y los resultados
+negativos se conservan; no se eliminan variantes por haber funcionado peor.
+
+## Consultar la API y registrar capturas nuevas
+
+Copia `.env.example` a `.env` y completa localmente `BCCH_API_KEY`. El entorno del proceso
+tiene prioridad. La plantilla no contiene valores reales y Git excluye los secretos.
+Nunca pegues el token en código, comandos, logs o incidencias.
 
 ```bash
-python -m research.collect
-python -m research.analyze
-python -m research.figures
+python -m research.collect --salida outputs/captura-nueva --fin 2026-10-29
+python -m research.analyze --datos outputs/captura-nueva --salida outputs/analisis-nuevo
+python -m campaign.prospective --snapshot outputs/captura-nueva --registry outputs/prospective.sqlite
 ```
 
-La consulta predeterminada reproduce el corte fijo 2026-10-28. Los datos y resultados
-quedan en `outputs/research/`: manifest con hashes, series, variables transformadas,
-correlaciones por periodo, panel mensual y distribuciones trimestrales. Las figuras se
-generan en `docs/assets/`. El análisis verifica los hashes del snapshot antes de usarlo.
+Usa una carpeta nueva por captura y ajusta `--fin` al corte requerido. Estas órdenes
+consultan y calculan datos nuevos; no reutilizan automáticamente el veredicto congelado.
+El registro conserva primeras capturas y revisiones observadas: **captura no significa
+publicación oficial**, y prepararlo no completa validación prospectiva.
+
+Durante esta campaña la nueva conexión al BCCh falló también para su página pública.
+Se trabajó con el snapshot real obtenido previamente el 29 de octubre de 2026, sin
+ampliar permisos. No se afirma haber medido revisiones entre dos descargas exitosas.
 
 ```mermaid
 flowchart TD
-    A["Catálogo BCCh: 25.291 códigos"] --> B["Candidatos por mecanismo, unidad y frecuencia"]
-    B --> C["API BCCh: observaciones y trazabilidad"]
-    C --> D["Núcleo mensual: mercado, confianza y financiamiento"]
-    C --> E["Crédito trimestral: saldo y distribución de respuestas"]
-    C --> F["Comparador diario v2"]
-    D --> G["Redundancia, contraste temporal y perfiles"]
-    E --> G
-    F --> G
-    G --> H["Diagnóstico reproducible y límites explícitos"]
+    A["API BCCh: snapshot y hashes"] --> B["Observación, captura y disponibilidad"]
+    B --> C["Cinco comparadores y criterios congelados"]
+    C --> D["Información conservada y contraste ECB"]
+    C --> E["152 escenarios de sensibilidad"]
+    D --> F["Veredicto: agregado de miedo/codicia no respaldado"]
+    E --> F
+    F --> G["Referencia descriptiva: perfiles, componentes y abstención"]
     classDef source fill:#10313b,color:#fff,stroke:#10313b;
     classDef analysis fill:#e9f3f2,color:#10313b,stroke:#237d85;
-    classDef output fill:#fff0e2,color:#10313b,stroke:#f2a367;
-    class A,C source;
-    class B,D,E,F,G analysis;
-    class H output;
+    classDef result fill:#fff0e2,color:#10313b,stroke:#f2a367;
+    class A,B source;
+    class C,D,E analysis;
+    class F,G result;
 ```
 
-## Explorar otras preguntas con la BDE
-
-```bash
-python indice.py catalogo "confianza" --frecuencia mensual
-python indice.py catalogo "" --capitulo "Derivados" --limite 50
-python indice.py serie F032.IMC.IND.Z.Z.EP18.Z.Z.0.M --salida outputs/imacec.csv
-python indice.py calcular --salida outputs/baseline-v2
-```
-
-`calcular` ejecuta el comparador diario v2. No incorpora automáticamente todos los
-candidatos de investigación. La [guía de uso](docs/uso.md) y el
-[mapa del catálogo](docs/catalogo.md) documentan las opciones.
-
-## Evidencia y límites
-
-Hay evidencia de información omitida y de diagnósticos que un promedio oculta. Aún
-faltan validación prospectiva, comparación con indicadores existentes, sensibilidad
-completa y evaluación de utilidad con usuarios. La historia disponible contiene revisiones
-y no reconstruye cuándo se publicó cada observación. No se afirma novedad científica
-demostrada, causalidad, capacidad predictiva ni superioridad sobre el indicador original.
+## Documentación y alcance de la evidencia
 
 | Documento | Contenido |
 |---|---|
-| [Segunda investigación](docs/segunda-investigacion.md) | Hallazgos, cifras, interpretación y trabajo pendiente |
-| [Auditoría del catálogo](docs/auditoria-catalogo.md) | Los 20 capítulos y selección por mecanismos |
-| [Literatura ampliada](docs/literatura-ampliada.md) | Antecedentes y posibles contribuciones falsables |
-| [Crédito y distribuciones](docs/credito-distribuciones.md) | Cancelaciones que oculta el saldo neto |
-| [Protocolo reproducible](research/protocol.md) | Hipótesis, particiones y reglas de análisis |
-| [Uso](docs/uso.md) · [Referencia técnica](docs/referencia.md) | Configuración, API y seguridad |
-| [Metodología v2](docs/metodologia.md) · [Verificación v2](docs/verificacion.md) | Comparador conservado para contrastar la ampliación |
+| [Veredicto](docs/cierre-veredicto.md) · [Matriz](docs/cierre-matriz.md) | Qué se respaldó, qué falló y qué no pudo identificarse |
+| [Contrato de evaluación](docs/cierre-contrato.md) | Comparadores, periodos, métricas, tolerancias y correcciones |
+| [Definiciones](docs/cierre-definiciones.md) | Mecanismos, fórmulas, contraejemplos y lecturas permitidas |
+| [Disponibilidad temporal](docs/cierre-disponibilidad.md) | Observación, publicación, captura, rezagos y versiones |
+| [Literatura y rivales](docs/cierre-literatura.md) | Scite, fuentes primarias, DT905, CISS, DT1080 y SINDy |
+| [Resultados reproducibles](campaign/results/) | Métricas, sensibilidad, episodios, metodología y huellas de ejecución |
+| [Estado de campaña](campaign/ledger.json) | Decisiones, fallos, límites y recursos consumidos |
+| [Exploración anterior](docs/segunda-investigacion.md) | Antecedente conservado; no es el veredicto vigente |
+| [API y seguridad](docs/referencia.md) · [Uso del comparador v2](docs/uso.md) | Integración BCCh y comandos históricos |
 
-Desarrollo original: Lautaro Parada Opazo. Proyecto abierto de MyM Ingenierías bajo
-[Apache 2.0](LICENSE). Datos atribuidos al BCCh y a las fuentes identificadas en su BDE.
-Desarrollo independiente, sin afiliación ni certificación del Banco Central.
+Las pruebas de software no sustituyen validación económica. La asociación crediticia
+no identifica miedo/codicia. No se hicieron pruebas con personas ni se demostró prioridad
+científica. El aporte verificable es una evaluación abierta y trazable de qué información
+conservan las representaciones y dónde cambia su lectura.
+
+Desarrollo original: Lautaro Parada Opazo. Herramienta abierta de MyM Ingenierías bajo
+[Apache 2.0](LICENSE). Datos del BCCh y fuentes atribuidas en su BDE. Desarrollo independiente,
+sin afiliación ni certificación del Banco Central.

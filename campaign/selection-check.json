@@ -1,0 +1,17 @@
+{
+  "id": "selection-separation-audit-v1",
+  "reason": "Post-first-batch evaluator correction: selecting an optional-family removal using all2021-2026 outcomes cannot validate that same choice. Apply unchanged5%margin to all optional removals in separated periods.",
+  "prior_knowledge": "All2021-2026 aggregate findings and original exploration already known. This audit is retrospective, not independent or pristine.",
+  "fit_end": "2020-12-31",
+  "selection_start": "2021-01-01",
+  "selection_end": "2022-12-31",
+  "evaluation_start": "2023-01-01",
+  "evaluation_end": "2026-09-30",
+  "optional_families": ["participation", "real_credit", "liquid_composition"],
+  "maximum_relative_mae_loss_each_target": 0.05,
+  "rule": "Single deletion only. If exactly one removal satisfies all six targets on selection, check that removal on evaluation. Keep fullpanel6 if none/multiple or if evaluation fails. Do not choose another removal using evaluation.",
+  "new_fits": 0,
+  "new_sensitivity_scenarios": 0,
+  "new_bootstraps": 0,
+  "unchanged_campaign_verdict": "No validated fear/greed claim regardless of this descriptive simplification check."
+}
