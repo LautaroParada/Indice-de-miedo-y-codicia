@@ -1,0 +1,209 @@
+{
+  "protocol": {
+    "id": "selection-separation-audit-v1",
+    "reason": "Post-first-batch evaluator correction: selecting an optional-family removal using all2021-2026 outcomes cannot validate that same choice. Apply unchanged5%margin to all optional removals in separated periods.",
+    "prior_knowledge": "All2021-2026 aggregate findings and original exploration already known. This audit is retrospective, not independent or pristine.",
+    "fit_end": "2020-12-31",
+    "selection_start": "2021-01-01",
+    "selection_end": "2022-12-31",
+    "evaluation_start": "2023-01-01",
+    "evaluation_end": "2026-09-30",
+    "optional_families": [
+      "participation",
+      "real_credit",
+      "liquid_composition"
+    ],
+    "maximum_relative_mae_loss_each_target": 0.05,
+    "rule": "Single deletion only. If exactly one removal satisfies all six targets on selection, check that removal on evaluation. Keep fullpanel6 if none/multiple or if evaluation fails. Do not choose another removal using evaluation.",
+    "new_fits": 0,
+    "new_sensitivity_scenarios": 0,
+    "new_bootstraps": 0,
+    "unchanged_campaign_verdict": "No validated fear/greed claim regardless of this descriptive simplification check."
+  },
+  "results": {
+    "participation": {
+      "selection": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 8,
+            "relative_mae_loss": -0.09540312037350185
+          },
+          "ecb_demand_large": {
+            "n": 8,
+            "relative_mae_loss": 0.14462778884626326
+          },
+          "ecb_demand_sme": {
+            "n": 8,
+            "relative_mae_loss": -0.03925175396801084
+          },
+          "ecb_supply_households": {
+            "n": 8,
+            "relative_mae_loss": -0.1094827412905609
+          },
+          "ecb_supply_large": {
+            "n": 8,
+            "relative_mae_loss": 0.1136107569899445
+          },
+          "ecb_supply_sme": {
+            "n": 8,
+            "relative_mae_loss": 0.18504159388025876
+          }
+        },
+        "passes_all": false
+      },
+      "evaluation": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 14,
+            "relative_mae_loss": -0.04304370917487954
+          },
+          "ecb_demand_large": {
+            "n": 14,
+            "relative_mae_loss": 0.08372566845869156
+          },
+          "ecb_demand_sme": {
+            "n": 14,
+            "relative_mae_loss": -0.03518628359632747
+          },
+          "ecb_supply_households": {
+            "n": 14,
+            "relative_mae_loss": -0.06373227517122726
+          },
+          "ecb_supply_large": {
+            "n": 14,
+            "relative_mae_loss": 0.10734693862688394
+          },
+          "ecb_supply_sme": {
+            "n": 14,
+            "relative_mae_loss": 0.05007946716346501
+          }
+        },
+        "passes_all": false
+      }
+    },
+    "real_credit": {
+      "selection": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 8,
+            "relative_mae_loss": 0.14673462836405138
+          },
+          "ecb_demand_large": {
+            "n": 8,
+            "relative_mae_loss": -0.05596910639216379
+          },
+          "ecb_demand_sme": {
+            "n": 8,
+            "relative_mae_loss": 0.006748891809535085
+          },
+          "ecb_supply_households": {
+            "n": 8,
+            "relative_mae_loss": -0.010702728474789147
+          },
+          "ecb_supply_large": {
+            "n": 8,
+            "relative_mae_loss": -0.14529034558318632
+          },
+          "ecb_supply_sme": {
+            "n": 8,
+            "relative_mae_loss": 0.013061793856849135
+          }
+        },
+        "passes_all": false
+      },
+      "evaluation": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 14,
+            "relative_mae_loss": 0.45153892411802876
+          },
+          "ecb_demand_large": {
+            "n": 14,
+            "relative_mae_loss": -0.049417595383782986
+          },
+          "ecb_demand_sme": {
+            "n": 14,
+            "relative_mae_loss": -0.008257334090111534
+          },
+          "ecb_supply_households": {
+            "n": 14,
+            "relative_mae_loss": -0.0035396135659364614
+          },
+          "ecb_supply_large": {
+            "n": 14,
+            "relative_mae_loss": 0.07021542698230876
+          },
+          "ecb_supply_sme": {
+            "n": 14,
+            "relative_mae_loss": 0.0233217107908541
+          }
+        },
+        "passes_all": false
+      }
+    },
+    "liquid_composition": {
+      "selection": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 8,
+            "relative_mae_loss": -0.010125466202850042
+          },
+          "ecb_demand_large": {
+            "n": 8,
+            "relative_mae_loss": 0.007667467976959719
+          },
+          "ecb_demand_sme": {
+            "n": 8,
+            "relative_mae_loss": 0.07226155250021504
+          },
+          "ecb_supply_households": {
+            "n": 8,
+            "relative_mae_loss": -0.013524507097573357
+          },
+          "ecb_supply_large": {
+            "n": 8,
+            "relative_mae_loss": 0.004239651461579452
+          },
+          "ecb_supply_sme": {
+            "n": 8,
+            "relative_mae_loss": -0.02502323380087834
+          }
+        },
+        "passes_all": false
+      },
+      "evaluation": {
+        "targets": {
+          "ecb_demand_households": {
+            "n": 14,
+            "relative_mae_loss": -0.021082951383730397
+          },
+          "ecb_demand_large": {
+            "n": 14,
+            "relative_mae_loss": -0.007216903895772342
+          },
+          "ecb_demand_sme": {
+            "n": 14,
+            "relative_mae_loss": -0.14730593212625065
+          },
+          "ecb_supply_households": {
+            "n": 14,
+            "relative_mae_loss": 0.10188465243304212
+          },
+          "ecb_supply_large": {
+            "n": 14,
+            "relative_mae_loss": -0.006674453432594318
+          },
+          "ecb_supply_sme": {
+            "n": 14,
+            "relative_mae_loss": -0.053889847148602565
+          }
+        },
+        "passes_all": false
+      }
+    }
+  },
+  "selected_on2021_2022": null,
+  "retained_after2023_2026": null,
+  "reference_method": "panel6",
+  "interpretation": "Retrospective separation check; no formal noninferiority or fear/greed validation"
+}

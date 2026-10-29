@@ -32,12 +32,15 @@ Repository = "https://github.com/LautaroParada/Indice-de-miedo-y-codicia"
 
 [tool.setuptools]
 py-modules = ["indice"]
+include-package-data = false
 
 [tool.setuptools.packages.find]
-include = ["imc*", "research*"]
+include = ["imc*", "research*", "campaign*"]
+namespaces = false
 
 [tool.setuptools.package-data]
 research = ["*.json", "*.md"]
+campaign = ["*.json", "snapshot-reference/*.json", "snapshot-reference/*.csv"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

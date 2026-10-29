@@ -1,0 +1,12 @@
+{
+  "added": 0,
+  "changed": 0,
+  "unchanged": 91144,
+  "duplicate": true,
+  "snapshot_hash": "799ab89183499a6c2a6516fe595a76006f9af63d94e2744259a54422d172ceff",
+  "snapshots": 1,
+  "observations": 91144,
+  "max_first_seen_at": "2026-10-29T18:26:33.964644+00:00",
+  "observed_revisions": 0,
+  "notice": "first_seen_at is the earliest capture in supplied snapshots, not official publication. Historical replay is not prospective validation."
+}

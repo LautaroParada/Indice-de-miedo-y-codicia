@@ -1,0 +1,27 @@
+# Matriz de afirmaciones
+
+Veredicto B: no respaldado para un agregado de miedo/codicia ni para un titular generalmente estable. La corroboración económica es exploratoria; la referencia descriptiva no es un índice ganador validado.
+
+| Afirmación | Evidencia | Brecha | Experimento | Métrica | Aceptación | Resultado | Veredicto |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Miedo/codicia identificado | Precios, confianza y crédito | No hay preferencias observadas netas de fundamentos | A: mecanismos y objetivos ECB excluidos de los componentes | Identificación discriminante | Evidencia independiente del constructo | ECB mide crédito; no preferencias de riesgo | NO IDENTIFICADO; no autoriza etiqueta |
+| Un agregado conserva diagnóstico | Cinco representaciones | Composición comprimida | B: reconstrucción temporal de categorías | Exactitud en las familias principales | ≥ 90 % | Escalares: 58,8–73,5 %; paneles: 100 % por lectura directa | RECHAZADO como sustituto del desglose |
+| Detecta oposición extrema | Contraste mensual | Cero positivos | B: mercado < 25 y confianza > 75, o viceversa | Sensibilidad de detección (recall) | Casos positivos observables y ≥ 90 % de acierto | 0 casos en 68 meses; recall no evaluable | INCONCLUSO para detección extrema |
+| Familias aportan a condiciones crediticias | Seis series ECB excluidas de los componentes | Corroboración con objetivos externos a los componentes | B: ridge con controles y ablaciones | MAE e IC 95 % exploratorio | Ganancia ≥ 10 % e intervalo positivo en oferta y demanda | Paneles 3 y 6 cumplen en 3 objetivos cada uno; no hay ganador uniforme | CORROBORACIÓN EXPLORATORIA |
+| Panel 3 iguala a Panel 6 | Mismos periodos | Menor complejidad | B: comparación pareada | Pérdida relativa de MAE | ≤ 5 % en cada objetivo ECB | Excede el 5 % en 4 de 6 objetivos | NO CUMPLE margen puntual |
+| Pesos menores no alteran lectura | 24 perturbaciones de ±20 % | Sensibilidad | C: cinco arquitecturas | Mediana / p95 / categoría / extremos | ≤ 5 puntos / 10 puntos / 10 % / 1 %, con N ≥ 36 | 288/288 comparaciones cumplen | RESPALDADO para esas perturbaciones |
+| Etiqueta independiente del horizonte | Ventanas de 36, 60 y 120 meses | Cambios legítimos de referencia | C: rango y acuerdo entre categorías | Cobertura de etiqueta | ≥ 50 % de los 69 meses por familia principal | Mercado: 53/69; confianza: 28/69; presiones: 6/69 | FALLA como titular general |
+| Información disponible al cierre | Fechas de observación | Publicación y vintages | D: API, calendario y rezagos | Cobertura histórica de publicación | Fechas de publicación por observación y versiones | No disponibles para estas 52 series; nueva descarga impedida por conectividad | SOLO RETROSPECTIVO |
+| Dinámica SINDy identificable | Tres estados | Poca muestra y autocorrelación | E: criterio previo de identificabilidad | Transiciones y N efectivo | ≥ 100 transiciones, N efectivo ≥ 100 y contraste ≥ 36 meses | 70 transiciones; N efectivo: 1,55–6,55 | RECHAZADO ajuste SINDy en esta muestra |
+| Novedad metodológica | DT905, CISS, DT1080 y literatura sobre sentimiento | Antecedentes cercanos | E: 19 consultas dirigidas del conjunto de revisores | Correspondencia de contribuciones | Distinguir aporte de técnicas existentes | Los subíndices, percentiles y contribuciones ya tienen antecedentes | NO DEMOSTRADA; aporte técnico reproducible |
+| Mejora la comprensión o el tiempo de uso | Tareas automatizadas | Sin personas participantes | No se sustituyen usuarios por agentes | Exactitud y tiempo de comprensión humanos | Ensayo con personas | No ejecutado; sin participantes autorizados o disponibles | INCONCLUSO; no se afirma mejora de usabilidad |
+| Software reproducible | Snapshot de la API y hashes | Reejecución integral | Ejecución completa, pruebas y reproducción | Igualdad numérica y hashes | Mismo resultado a partir del snapshot y la configuración | Se registra aparte en reproduction.json | VERIFICACIÓN TÉCNICA separada |
+
+## Documentación de la campaña
+
+1. [Contrato y criterios registrados](cierre-contrato.md).
+2. [Definiciones, fórmulas y límites de interpretación](cierre-definiciones.md).
+3. [Disponibilidad, fechas de publicación y versiones](cierre-disponibilidad.md).
+4. [Literatura, antecedentes y explicaciones rivales](cierre-literatura.md).
+5. [Veredicto completo de la campaña](cierre-veredicto.md).
+6. [Matriz de afirmaciones y evidencia](cierre-matriz.md).

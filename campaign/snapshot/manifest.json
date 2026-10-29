@@ -1,0 +1,372 @@
+{
+  "retrieved_at_utc": "2026-10-29T19:30:20.141784+00:00",
+  "start": "2006-01-01",
+  "end": "2026-10-28",
+  "provider": "Banco Central de Chile",
+  "series": [
+    {
+      "alias": "usd",
+      "code": "F073.TCO.PRE.Z.D",
+      "block": "cambio",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "copper",
+      "code": "F019.PPB.PRE.100.D",
+      "block": "externo",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "nominal10",
+      "code": "F022.BCLP.TIS.AN10.NO.Z.D",
+      "block": "curva",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "idie",
+      "code": "F029.IDIE.IND.TOT.D",
+      "block": "incertidumbre",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ipsa",
+      "code": "F013.IBC.IND.N.7.LAC.CL.CLP.BLO.M",
+      "block": "bolsa",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "igpa",
+      "code": "F013.IBG.IND.N.7.LAC.CL.CLP.BLO.M",
+      "block": "bolsa",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "market_cap",
+      "code": "F022.MB2.STO.Z.Z.Z.M",
+      "block": "participacion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "turnover_value",
+      "code": "F022.MB4.FLU.Z.Z.Z.M",
+      "block": "participacion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "price_earnings",
+      "code": "F022.MB5.FLU.Z.Z.Z.M",
+      "block": "valoracion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "price_book",
+      "code": "F022.MB6.FLU.Z.Z.Z.M",
+      "block": "valoracion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ipec",
+      "code": "F089.IPE.IND.75M2.M",
+      "block": "confianza_hogares",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ipec_expectations",
+      "code": "F089.IPE.IND.72M2.M",
+      "block": "confianza_hogares",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "imce",
+      "code": "G089.IME.IND.A0.M",
+      "block": "confianza_empresas",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "imce_nonmining",
+      "code": "G089.IME.IND.A04.M",
+      "block": "confianza_empresas",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "icc_investments",
+      "code": "F089.ICC.IND.B4M.M",
+      "block": "confianza_hogares",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "bank_spread",
+      "code": "F022.SBR.TIN.D089.NO.Z.M",
+      "block": "credito_precio",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "commercial_rate",
+      "code": "F022.COM.TIP.Z.NO.Z.M",
+      "block": "credito_precio",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "interbank",
+      "code": "F022.TIB.TIP.D001.NO.Z.M",
+      "block": "fondeo",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "commercial_credit",
+      "code": "F022.COMBI.STO.Z.Z.CLP.M",
+      "block": "credito_cantidad",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "arrears",
+      "code": "F022.IM4.IND.Z.Z.Z.M",
+      "block": "riesgo_realizado",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme",
+      "code": "F089.ECB.IND.COMEA2.T",
+      "block": "oferta_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_demand_sme",
+      "code": "F089.ECB.IND.COMDNC2.T",
+      "block": "demanda_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "m1",
+      "code": "F021.M1.STO.N.CLP.5.M",
+      "block": "preferencia_liquidez",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "m2",
+      "code": "F021.M2.STO.N.CLP.5.M",
+      "block": "preferencia_liquidez",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "term_deposits",
+      "code": "F021.DPP.STO.N.CLP.5.M",
+      "block": "preferencia_liquidez",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "nominal2",
+      "code": "F022.BCLP.TIS.AN02.NO.Z.D",
+      "block": "curva",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "nominal5",
+      "code": "F022.BCLP.TIS.AN05.NO.Z.D",
+      "block": "inflacion_mercado",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "real5",
+      "code": "F022.BUF.TIS.AN05.UF.Z.D",
+      "block": "inflacion_mercado",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "real10",
+      "code": "F022.BUF.TIS.AN10.UF.Z.D",
+      "block": "curva_real",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "tpm",
+      "code": "F022.TPM.TIN.D001.NO.Z.D",
+      "block": "politica_control",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "eee_inflation12",
+      "code": "F089.IPC.V12.14.M",
+      "block": "expectativas_inflacion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "eee_inflation24",
+      "code": "F089.IPC.V12.15.M",
+      "block": "expectativas_inflacion",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "eee_fx12",
+      "code": "F089.TCN.PRE.14.M",
+      "block": "expectativas_cambio",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "eee_tpm12",
+      "code": "F089.TPM.TAS.14.M",
+      "block": "expectativas_politica",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ndf_nonresident",
+      "code": "F099.DER.STO.Z.40.N.NR.NET.NDF.MMUSD.CLPUSD.C.Z.0.M",
+      "block": "posicionamiento",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "spot_position",
+      "code": "F099.SPT.STO.Z.MCF.Z.Z.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "block": "posicionamiento",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "derivatives_nonresident",
+      "code": "F099.DER.STO.Z.40.N.NR.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "block": "posicionamiento",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "derivatives_pensions",
+      "code": "F099.DER.STO.Z.40.R.42.NET.Z.MMUSD.MLME.Z.Z.0.D",
+      "block": "posicionamiento",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "spot_volume",
+      "code": "F099.SPT.FLU.Z.40.Z.Z.TOT.Z.MMUSD.CLPUSD.Z.Z.0.M",
+      "block": "actividad_cambiaria",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "imacec",
+      "code": "F032.IMC.IND.Z.Z.EP18.Z.Z.0.M",
+      "block": "actividad_control",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_large",
+      "code": "F089.ECB.IND.COMEA1.T",
+      "block": "oferta_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_demand_large",
+      "code": "F089.ECB.IND.COMDNC1.T",
+      "block": "demanda_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_households",
+      "code": "F089.ECB.IND.CONSEA1.T",
+      "block": "oferta_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_demand_households",
+      "code": "F089.ECB.IND.CONSDNC1.T",
+      "block": "demanda_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "eof_financial_conditions",
+      "code": "F089.EOF.FI_TPM_CFL.1A.D",
+      "block": "financiero_declarado",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "real2",
+      "code": "F022.BUF.TIS.AN02.UF.Z.D",
+      "block": "inflacion_mercado",
+      "frequency": "Diaria",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "cpi",
+      "code": "F074.IPC.IND.Z.EP23.C.M",
+      "block": "deflactor",
+      "frequency": "Mensual",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme_less",
+      "code": "F089.ECB.MNRES.COMEA2.T",
+      "block": "distribucion_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme_moderately_less",
+      "code": "F089.ECB.MMNRES.COMEA2.T",
+      "block": "distribucion_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme_unchanged",
+      "code": "F089.ECB.SCAM.COMEA2.T",
+      "block": "distribucion_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme_moderately_more",
+      "code": "F089.ECB.MMSRES.COMEA2.T",
+      "block": "distribucion_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    },
+    {
+      "alias": "ecb_supply_sme_more",
+      "code": "F089.ECB.MSRES.COMEA2.T",
+      "block": "distribucion_credito",
+      "frequency": "Trimestral",
+      "status": "unavailable_or_invalid"
+    }
+  ]
+}
