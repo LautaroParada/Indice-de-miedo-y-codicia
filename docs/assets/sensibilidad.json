@@ -1,0 +1,48 @@
+{
+  "method": "Sensibilidad descriptiva; no mide rentabilidad ni capacidad predictiva.",
+  "windows": {
+    "252": {
+      "common_rows": 3187,
+      "mean_absolute_difference": 5.153646300204472,
+      "maximum_absolute_difference": 21.378968253968267,
+      "correlation": 0.9318020198409431,
+      "latest_value": 17.75793650793651
+    },
+    "504": {
+      "common_rows": 3187,
+      "mean_absolute_difference": 0.0,
+      "maximum_absolute_difference": 0.0,
+      "correlation": 1.0,
+      "latest_value": 19.295634920634924
+    },
+    "756": {
+      "common_rows": 3187,
+      "mean_absolute_difference": 3.178821977110575,
+      "maximum_absolute_difference": 15.203373015873012,
+      "correlation": 0.9731253463421302,
+      "latest_value": 24.52050264550265
+    }
+  },
+  "leave_one_block_out": {
+    "cambiario": {
+      "mean_absolute_difference": 4.704489724023468,
+      "maximum_absolute_difference": 17.85714285714286,
+      "latest_value": 12.929894179894184
+    },
+    "cobre": {
+      "mean_absolute_difference": 6.551655467849129,
+      "maximum_absolute_difference": 21.742724867724867,
+      "latest_value": 17.62566137566138
+    },
+    "tasas": {
+      "mean_absolute_difference": 6.332980812882531,
+      "maximum_absolute_difference": 21.03174603174603,
+      "latest_value": 20.932539682539687
+    },
+    "incertidumbre": {
+      "mean_absolute_difference": 7.341677617974633,
+      "maximum_absolute_difference": 21.982473544973544,
+      "latest_value": 25.694444444444446
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "methodology_version": "2.0.0",
+  "methodology": {
+    "horizon": 20,
+    "normalization_window": 504,
+    "min_history": 252,
+    "max_source_gap_days": 31
+  },
+  "weights": {
+    "presion_cambiaria": 0.125,
+    "volatilidad_cambiaria": 0.125,
+    "momentum_cobre": 0.25,
+    "variabilidad_tasas": 0.25,
+    "incertidumbre": 0.25
+  },
+  "requested_start": "2012-01-01",
+  "requested_end": "2026-10-28",
+  "retrieved_at_utc": "2026-10-29T00:16:57.078776+00:00",
+  "sources": {
+    "dolar": {
+      "series_id": "F073.TCO.PRE.Z.D",
+      "label": "Dólar observado",
+      "unit": "CLP/USD",
+      "first_observation": "2012-01-02",
+      "last_observation": "2026-10-28",
+      "valid_observations": 3688,
+      "missing_observations": 1726,
+      "max_age_days": 0
+    },
+    "cobre": {
+      "series_id": "F019.PPB.PRE.100.D",
+      "label": "Cobre refinado BML",
+      "unit": "USD/libra",
+      "first_observation": "2012-10-05",
+      "last_observation": "2026-10-28",
+      "valid_observations": 3498,
+      "missing_observations": 1639,
+      "max_age_days": 3
+    },
+    "tasa_10y": {
+      "series_id": "F022.BCLP.TIS.AN10.NO.Z.D",
+      "label": "Bonos en pesos a 10 años (BCP/BTP)",
+      "unit": "% anual",
+      "first_observation": "2012-01-02",
+      "last_observation": "2026-10-27",
+      "valid_observations": 3445,
+      "missing_observations": 1968,
+      "max_age_days": 3
+    },
+    "incertidumbre": {
+      "series_id": "F029.IDIE.IND.TOT.D",
+      "label": "Índice diario de incertidumbre económica",
+      "unit": "índice",
+      "first_observation": "2012-01-30",
+      "last_observation": "2026-10-23",
+      "valid_observations": 5381,
+      "missing_observations": 0,
+      "max_age_days": 7
+    }
+  },
+  "complete_rows": 3187,
+  "total_rows": 3688,
+  "latest_complete_date": "2026-10-28",
+  "latest_value": 19.295634920634924,
+  "latest_source_dates": {
+    "dolar": "2026-10-28",
+    "cobre": "2026-10-28",
+    "tasa_10y": "2026-10-27",
+    "incertidumbre": "2026-10-23"
+  },
+  "sha256": {
+    "series/dolar.csv": "a5194bcefd310de9e668f95a9fdcf1894f1e3cddee78a16f26f0a8d840925af0",
+    "series/cobre.csv": "82e7ab9367a5e884acf3cefd69462b08a4bfe92529edbe039bb4308c2341e5ac",
+    "series/tasa_10y.csv": "97c1b758629ad6f19dc9efcdce54e51218eb34e5ddd4de134279413125d959a2",
+    "series/incertidumbre.csv": "9358643e89ad6ff686390c631018382b462f5e8736c16bf6d4169a83b6cb6e21",
+    "indice.csv": "b9fd4c8448cb31e38c030f6495627cd62fcd4aac412eb8378e20a45b01743a06"
+  },
+  "interpretation": "Mayor puntaje: condiciones relativamente más distendidas en la muestra.",
+  "limitations": [
+    "No mide directamente emociones, valor justo ni rendimientos futuros.",
+    "Las fechas son de observación, no de publicación; no es una base point-in-time.",
+    "Los pesos, ventanas y orientaciones son decisiones de diseño no calibradas."
+  ]
+}

@@ -1,0 +1,7 @@
+include .env.example
+recursive-include docs *.md *.svg *.json
+include scripts/sensitivity.py
+recursive-include research *.py *.json *.md
+exclude .env
+prune outputs
+prune data

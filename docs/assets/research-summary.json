@@ -1,0 +1,923 @@
+{
+  "candidates": 52,
+  "live_ok": 52,
+  "monthly_features": 51,
+  "quarterly_series": 11,
+  "cutoff": "2026-10-28",
+  "last_complete_month": "2026-09-30",
+  "redundant_pairs": {
+    "development": [
+      {
+        "a": "ipsa",
+        "b": "igpa",
+        "rho": 0.9916675416100725,
+        "n": 117
+      },
+      {
+        "a": "interbank",
+        "b": "tpm",
+        "rho": 0.9896380601172748,
+        "n": 120
+      },
+      {
+        "a": "imce",
+        "b": "imce_nonmining",
+        "rho": 0.9710066185135061,
+        "n": 120
+      },
+      {
+        "a": "market_cap",
+        "b": "price_book",
+        "rho": 0.9117885186755559,
+        "n": 120
+      },
+      {
+        "a": "inflation_compensation5",
+        "b": "inflation_compensation2",
+        "rho": 0.9110572769979881,
+        "n": 119
+      },
+      {
+        "a": "price_book",
+        "b": "imce_nonmining",
+        "rho": 0.897362902948052,
+        "n": 120
+      },
+      {
+        "a": "ipec",
+        "b": "ipec_expectations",
+        "rho": 0.8913431822461338,
+        "n": 120
+      },
+      {
+        "a": "m2",
+        "b": "term_deposits",
+        "rho": 0.8829994009702006,
+        "n": 84
+      },
+      {
+        "a": "price_book",
+        "b": "imce",
+        "rho": 0.8759515160109532,
+        "n": 120
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "eee_fx12",
+        "rho": -0.848156624336816,
+        "n": 120
+      },
+      {
+        "a": "imce",
+        "b": "eee_fx12",
+        "rho": -0.8424270599318561,
+        "n": 120
+      },
+      {
+        "a": "commercial_credit",
+        "b": "term_deposits",
+        "rho": 0.8376052783587425,
+        "n": 84
+      },
+      {
+        "a": "nominal10",
+        "b": "nominal5",
+        "rho": 0.8349493813796304,
+        "n": 119
+      },
+      {
+        "a": "eee_tpm12",
+        "b": "term_slope",
+        "rho": -0.8223010631084564,
+        "n": 120
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "imacec",
+        "rho": 0.8171547647566576,
+        "n": 108
+      },
+      {
+        "a": "market_cap",
+        "b": "imce_nonmining",
+        "rho": 0.8119486580571161,
+        "n": 120
+      },
+      {
+        "a": "tpm",
+        "b": "term_slope",
+        "rho": -0.8093297752498269,
+        "n": 120
+      },
+      {
+        "a": "interbank",
+        "b": "term_slope",
+        "rho": -0.8063038957152279,
+        "n": 120
+      }
+    ],
+    "temporal_test": [
+      {
+        "a": "interbank",
+        "b": "tpm",
+        "rho": 0.9964192079345287,
+        "n": 93
+      },
+      {
+        "a": "ipsa",
+        "b": "igpa",
+        "rho": 0.983961018173513,
+        "n": 93
+      },
+      {
+        "a": "imce",
+        "b": "imce_nonmining",
+        "rho": 0.9472917988990716,
+        "n": 93
+      },
+      {
+        "a": "tpm",
+        "b": "eee_tpm12",
+        "rho": 0.9415861360676001,
+        "n": 93
+      },
+      {
+        "a": "interbank",
+        "b": "eee_tpm12",
+        "rho": 0.9399153856657075,
+        "n": 93
+      },
+      {
+        "a": "m1",
+        "b": "tpm",
+        "rho": -0.9292240439954987,
+        "n": 93
+      },
+      {
+        "a": "interbank",
+        "b": "m1",
+        "rho": -0.9282788563693001,
+        "n": 93
+      },
+      {
+        "a": "ipec",
+        "b": "ipec_expectations",
+        "rho": 0.916170772361734,
+        "n": 93
+      },
+      {
+        "a": "nominal10",
+        "b": "nominal5",
+        "rho": 0.8696522083605704,
+        "n": 83
+      },
+      {
+        "a": "real5",
+        "b": "real10",
+        "rho": 0.8665466240430099,
+        "n": 83
+      },
+      {
+        "a": "idie",
+        "b": "liquid_share",
+        "rho": 0.8511959381682943,
+        "n": 93
+      },
+      {
+        "a": "m1",
+        "b": "eee_tpm12",
+        "rho": -0.8421503469636107,
+        "n": 93
+      },
+      {
+        "a": "interbank",
+        "b": "term_slope",
+        "rho": -0.8394505932205498,
+        "n": 72
+      },
+      {
+        "a": "tpm",
+        "b": "term_slope",
+        "rho": -0.8392750042741457,
+        "n": 72
+      },
+      {
+        "a": "market_cap",
+        "b": "ipec",
+        "rho": 0.8307908039001611,
+        "n": 93
+      },
+      {
+        "a": "idie",
+        "b": "market_cap",
+        "rho": -0.8263059959135703,
+        "n": 93
+      },
+      {
+        "a": "real5",
+        "b": "real2",
+        "rho": 0.8242958059466093,
+        "n": 42
+      },
+      {
+        "a": "ipec",
+        "b": "icc_investments",
+        "rho": 0.8206443348816966,
+        "n": 69
+      },
+      {
+        "a": "m1",
+        "b": "term_slope",
+        "rho": 0.8134049002917859,
+        "n": 72
+      }
+    ],
+    "recent": [
+      {
+        "a": "interbank",
+        "b": "tpm",
+        "rho": 1.0,
+        "n": 45
+      },
+      {
+        "a": "ipsa",
+        "b": "igpa",
+        "rho": 0.9915819898556084,
+        "n": 45
+      },
+      {
+        "a": "interbank",
+        "b": "m1",
+        "rho": -0.9716301010551007,
+        "n": 45
+      },
+      {
+        "a": "m1",
+        "b": "tpm",
+        "rho": -0.9716301010551007,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "interbank",
+        "rho": -0.9661153571924632,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "tpm",
+        "rho": -0.9661153571924632,
+        "n": 45
+      },
+      {
+        "a": "interbank",
+        "b": "eee_tpm12",
+        "rho": 0.9542010402634321,
+        "n": 45
+      },
+      {
+        "a": "tpm",
+        "b": "eee_tpm12",
+        "rho": 0.9542010402634321,
+        "n": 45
+      },
+      {
+        "a": "interbank",
+        "b": "real_credit_growth",
+        "rho": -0.9442068850546294,
+        "n": 45
+      },
+      {
+        "a": "tpm",
+        "b": "real_credit_growth",
+        "rho": -0.9442068850546294,
+        "n": 45
+      },
+      {
+        "a": "m1",
+        "b": "real_credit_growth",
+        "rho": 0.9427348911566433,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "eee_tpm12",
+        "rho": -0.9389014187876935,
+        "n": 45
+      },
+      {
+        "a": "eee_tpm12",
+        "b": "real_credit_growth",
+        "rho": -0.931686530246799,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "m1",
+        "rho": 0.9287434250921873,
+        "n": 45
+      },
+      {
+        "a": "ipec",
+        "b": "ipec_expectations",
+        "rho": 0.9250181454453092,
+        "n": 45
+      },
+      {
+        "a": "m1",
+        "b": "eee_tpm12",
+        "rho": -0.9205972515630655,
+        "n": 45
+      },
+      {
+        "a": "commercial_credit",
+        "b": "real_credit_growth",
+        "rho": 0.919850952765348,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "real_credit_growth",
+        "rho": 0.911298909885725,
+        "n": 45
+      },
+      {
+        "a": "real5",
+        "b": "real10",
+        "rho": 0.9058888098224411,
+        "n": 38
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "interbank",
+        "rho": -0.8998652859144651,
+        "n": 45
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "tpm",
+        "rho": -0.8998652859144651,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "imce_nonmining",
+        "rho": 0.8806216773945537,
+        "n": 45
+      },
+      {
+        "a": "nominal10",
+        "b": "nominal5",
+        "rho": 0.8780490033763673,
+        "n": 38
+      },
+      {
+        "a": "commercial_credit",
+        "b": "m1",
+        "rho": 0.876751662460855,
+        "n": 45
+      },
+      {
+        "a": "market_cap",
+        "b": "term_deposits",
+        "rho": -0.8708289778061513,
+        "n": 45
+      },
+      {
+        "a": "interbank",
+        "b": "commercial_credit",
+        "rho": -0.8698749417989302,
+        "n": 45
+      },
+      {
+        "a": "commercial_credit",
+        "b": "tpm",
+        "rho": -0.8698749417989302,
+        "n": 45
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "m1",
+        "rho": 0.8686590715192202,
+        "n": 45
+      },
+      {
+        "a": "price_book",
+        "b": "eee_tpm12",
+        "rho": -0.8565307674142274,
+        "n": 45
+      },
+      {
+        "a": "commercial_credit",
+        "b": "term_slope",
+        "rho": 0.853868536627925,
+        "n": 37
+      },
+      {
+        "a": "imce_nonmining",
+        "b": "eee_tpm12",
+        "rho": -0.8526668492088478,
+        "n": 45
+      },
+      {
+        "a": "market_cap",
+        "b": "ipec",
+        "rho": 0.85208086511617,
+        "n": 45
+      },
+      {
+        "a": "commercial_credit",
+        "b": "eee_tpm12",
+        "rho": -0.8454336100799565,
+        "n": 45
+      },
+      {
+        "a": "eee_inflation12",
+        "b": "eee_tpm12",
+        "rho": 0.8445565118797146,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "price_book",
+        "rho": 0.8418675968722271,
+        "n": 45
+      },
+      {
+        "a": "eee_inflation12",
+        "b": "real_credit_growth",
+        "rho": -0.8381001917357793,
+        "n": 45
+      },
+      {
+        "a": "market_cap",
+        "b": "ipec_expectations",
+        "rho": 0.8348416311693343,
+        "n": 45
+      },
+      {
+        "a": "price_book",
+        "b": "interbank",
+        "rho": -0.8289677805068829,
+        "n": 45
+      },
+      {
+        "a": "price_book",
+        "b": "tpm",
+        "rho": -0.8289677805068829,
+        "n": 45
+      },
+      {
+        "a": "price_earnings",
+        "b": "commercial_credit",
+        "rho": 0.8282208606977897,
+        "n": 45
+      },
+      {
+        "a": "term_slope",
+        "b": "real_credit_growth",
+        "rho": 0.8281845568054427,
+        "n": 37
+      },
+      {
+        "a": "price_book",
+        "b": "m1",
+        "rho": 0.8201054731068229,
+        "n": 45
+      },
+      {
+        "a": "eee_tpm12",
+        "b": "term_slope",
+        "rho": -0.8110049624112826,
+        "n": 37
+      },
+      {
+        "a": "interbank",
+        "b": "term_slope",
+        "rho": -0.8082105590451962,
+        "n": 37
+      },
+      {
+        "a": "tpm",
+        "b": "term_slope",
+        "rho": -0.8082105590451962,
+        "n": 37
+      },
+      {
+        "a": "price_book",
+        "b": "real_credit_growth",
+        "rho": 0.8034438856647629,
+        "n": 45
+      },
+      {
+        "a": "market_cap",
+        "b": "eee_tpm12",
+        "rho": -0.8017900041010799,
+        "n": 45
+      }
+    ]
+  },
+  "reconstruction_from_v2": {
+    "usd": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.007186398025842644,
+      "mse_vs_train_constant": 1.006650445988091
+    },
+    "copper": {
+      "status": "ok",
+      "train_n": 36,
+      "test_n": 93,
+      "r2_test": -0.12986107645678113,
+      "mse_vs_train_constant": 1.026609988473861
+    },
+    "nominal10": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.0451816572042274,
+      "mse_vs_train_constant": 1.04467803666311
+    },
+    "idie": {
+      "status": "ok",
+      "train_n": 47,
+      "test_n": 93,
+      "r2_test": -0.0853828393855558,
+      "mse_vs_train_constant": 0.7253011126769154
+    },
+    "ipsa": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.04323701542330238,
+      "mse_vs_train_constant": 1.041358492176503
+    },
+    "igpa": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.05036224590813676,
+      "mse_vs_train_constant": 1.0503600033447393
+    },
+    "market_cap": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": 0.13842658739081615,
+      "mse_vs_train_constant": 0.8533929121015011
+    },
+    "turnover_value": {
+      "status": "ok",
+      "train_n": 36,
+      "test_n": 93,
+      "r2_test": -0.1327788691665932,
+      "mse_vs_train_constant": 1.062545156053561
+    },
+    "price_earnings": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.2891398415181339,
+      "mse_vs_train_constant": 1.1732228536470306
+    },
+    "price_book": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": 0.1392545417277241,
+      "mse_vs_train_constant": 0.8550853468575986
+    },
+    "ipec": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.018752537587059415,
+      "mse_vs_train_constant": 0.9532291042340528
+    },
+    "ipec_expectations": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": 0.059991690320263746,
+      "mse_vs_train_constant": 0.8896201033286937
+    },
+    "imce": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.606534829475698,
+      "mse_vs_train_constant": 1.14402850652185
+    },
+    "imce_nonmining": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.6386354814880673,
+      "mse_vs_train_constant": 1.1127374816480615
+    },
+    "icc_investments": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 69
+    },
+    "bank_spread": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -1.2635098117905033,
+      "mse_vs_train_constant": 1.0380841617894048
+    },
+    "commercial_rate": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.15005657526261884,
+      "mse_vs_train_constant": 1.1472980593894138
+    },
+    "interbank": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.4312295875614722,
+      "mse_vs_train_constant": 1.0170385163992801
+    },
+    "commercial_credit": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.5222780698368341,
+      "mse_vs_train_constant": 1.183164890145034
+    },
+    "arrears": {
+      "status": "insufficient",
+      "train_n": 11,
+      "test_n": 92
+    },
+    "m1": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.07731137770514795,
+      "mse_vs_train_constant": 1.025523634870614
+    },
+    "m2": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.3182625559836276,
+      "mse_vs_train_constant": 1.307828712512391
+    },
+    "term_deposits": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.08461609925450375,
+      "mse_vs_train_constant": 0.9442862755919056
+    },
+    "nominal2": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 69,
+      "r2_test": -0.07146109564263847,
+      "mse_vs_train_constant": 1.0696797602916441
+    },
+    "nominal5": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 83,
+      "r2_test": 0.0168218059466968,
+      "mse_vs_train_constant": 0.9807757602057288
+    },
+    "real5": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 83,
+      "r2_test": 0.01912642066052128,
+      "mse_vs_train_constant": 0.9778847472058416
+    },
+    "real10": {
+      "status": "ok",
+      "train_n": 58,
+      "test_n": 93,
+      "r2_test": -0.03104629939493697,
+      "mse_vs_train_constant": 1.0296396064111464
+    },
+    "tpm": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.4321383324943988,
+      "mse_vs_train_constant": 1.0057467296213678
+    },
+    "eee_inflation12": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.04459381107464733,
+      "mse_vs_train_constant": 0.9335435467719707
+    },
+    "eee_inflation24": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.062050378548108576,
+      "mse_vs_train_constant": 1.035892305576019
+    },
+    "eee_fx12": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.3002834620103234,
+      "mse_vs_train_constant": 1.1191313079700216
+    },
+    "eee_tpm12": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.5384133664063482,
+      "mse_vs_train_constant": 0.987934851643437
+    },
+    "ndf_nonresident": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 20
+    },
+    "spot_position": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.12365825940898967,
+      "mse_vs_train_constant": 1.1222941991915163
+    },
+    "derivatives_nonresident": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 20
+    },
+    "derivatives_pensions": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 20
+    },
+    "spot_volume": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 9
+    },
+    "imacec": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 92,
+      "r2_test": -0.1745042458285937,
+      "mse_vs_train_constant": 1.0543638133003366
+    },
+    "eof_financial_conditions": {
+      "status": "insufficient",
+      "train_n": 0,
+      "test_n": 4
+    },
+    "real2": {
+      "status": "ok",
+      "train_n": 60,
+      "test_n": 42,
+      "r2_test": 0.06346694578625067,
+      "mse_vs_train_constant": 0.9355713295270397
+    },
+    "cpi": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.15082314103935257,
+      "mse_vs_train_constant": 1.1444352050408846
+    },
+    "turnover": {
+      "status": "ok",
+      "train_n": 48,
+      "test_n": 93,
+      "r2_test": -0.1304252375721069,
+      "mse_vs_train_constant": 1.085471270930158
+    },
+    "funding_gap": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.15161591025779564,
+      "mse_vs_train_constant": 1.1407224667854068
+    },
+    "funding_deviation": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.31702845165434734,
+      "mse_vs_train_constant": 1.089819576276013
+    },
+    "term_slope": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 72,
+      "r2_test": -0.17108723330048026,
+      "mse_vs_train_constant": 1.0082816597890856
+    },
+    "inflation_compensation5": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 84,
+      "r2_test": -0.2616415963605019,
+      "mse_vs_train_constant": 1.1091139869648057
+    },
+    "liquid_share": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": -0.021431791970061287,
+      "mse_vs_train_constant": 1.0146599372907097
+    },
+    "fx_expectation_gap": {
+      "status": "ok",
+      "train_n": 62,
+      "test_n": 93,
+      "r2_test": 0.06834725716662693,
+      "mse_vs_train_constant": 0.9316511018730836
+    },
+    "rate_volatility": {
+      "status": "ok",
+      "train_n": 61,
+      "test_n": 92,
+      "r2_test": 0.5484933891615003,
+      "mse_vs_train_constant": 0.3674565666255156
+    },
+    "real_credit_growth": {
+      "status": "ok",
+      "train_n": 61,
+      "test_n": 93,
+      "r2_test": -0.8846242256240886,
+      "mse_vs_train_constant": 1.4517005437669046
+    },
+    "inflation_compensation2": {
+      "status": "ok",
+      "train_n": 61,
+      "test_n": 48,
+      "r2_test": -0.3200196820490371,
+      "mse_vs_train_constant": 1.1653397697380572
+    }
+  },
+  "panel_correlations_since_2019": {
+    "mercado": {
+      "mercado": 1.0,
+      "confianza": 0.5472316837095077,
+      "friccion": -0.536266565131184,
+      "participacion": -0.10220424830172298
+    },
+    "confianza": {
+      "mercado": 0.5472316837095077,
+      "confianza": 1.0,
+      "friccion": -0.5833342974452963,
+      "participacion": -0.00469818207800033
+    },
+    "friccion": {
+      "mercado": -0.536266565131184,
+      "confianza": -0.5833342974452963,
+      "friccion": 1.0,
+      "participacion": 0.14222556885294432
+    },
+    "participacion": {
+      "mercado": -0.10220424830172298,
+      "confianza": -0.00469818207800033,
+      "friccion": 0.14222556885294432,
+      "participacion": 1.0
+    }
+  },
+  "panel_complete_rows": 139,
+  "geometry": {
+    "status": "ok",
+    "features": [
+      "ipsa",
+      "price_book",
+      "turnover",
+      "ipec",
+      "imce_nonmining",
+      "bank_spread",
+      "funding_deviation",
+      "idie",
+      "rate_volatility",
+      "liquid_share",
+      "fx_expectation_gap",
+      "spot_position"
+    ],
+    "train_n": 47,
+    "test_n": 92,
+    "pca_components_95_train": 9,
+    "pca_max_abs_correlation_train": 2.6756935552067644e-15,
+    "pca_max_abs_correlation_test": 0.8524083201334001,
+    "effective_dimension_train": 5.396367896714472,
+    "effective_dimension_test": 4.831979137082005,
+    "baseline_effective_dimension_same_train": 3.9970197309713313,
+    "baseline_effective_dimension_same_test": 3.526037215644576
+  },
+  "limitations": [
+    "Historia revisada; sin vintages ni publicación reconstruida.",
+    "Baja correlación y R2 bajo no demuestran utilidad ni sentimiento.",
+    "Panel experimental, pesos convencionales no optimizados."
+  ]
+}

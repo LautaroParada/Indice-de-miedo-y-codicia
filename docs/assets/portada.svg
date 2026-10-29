@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-labelledby="title desc">
+  <title id="title">MyM Ingenierías. Herramientas abiertas para analizar datos de Chile</title>
+  <desc id="desc">Presentación institucional del índice de condiciones de mercado. Código abierto, series del Banco Central y metodología documentada.</desc>
+  <rect width="1200" height="400" fill="#10313b"/>
+  <path d="M62 94V44h12l15 16 15-16h12v50h-12V62L89 78 74 62v32z" fill="#fff"/>
+  <text x="135" y="68" fill="#fff" font-family="Arial,sans-serif" font-size="30" font-weight="700">MyM Ingenierías</text>
+  <text x="1134" y="68" fill="#f2a367" font-family="Arial,sans-serif" font-size="16" text-anchor="end" letter-spacing="2">HERRAMIENTAS ABIERTAS</text>
+  <path d="M64 122H1136" stroke="#4f6b73" stroke-width="1"/>
+  <text x="64" y="200" fill="#fff" font-family="Arial,sans-serif" font-size="46" font-weight="700">Condiciones de mercado</text>
+  <text x="64" y="253" fill="#fff" font-family="Arial,sans-serif" font-size="46" font-weight="700">de Chile, en datos.</text>
+  <text x="64" y="306" fill="#c8d9df" font-family="Arial,sans-serif" font-size="22">Series del Banco Central. Método documentado. Código abierto.</text>
+  <path d="M64 342H1136" stroke="#4f6b73" stroke-width="1"/>
+  <text x="64" y="376" fill="#fff" font-family="Arial,sans-serif" font-size="17">mymingenierias.com</text>
+  <text x="1136" y="376" fill="#f2a367" font-family="Arial,sans-serif" font-size="16" text-anchor="end">ANÁLISIS DESCRIPTIVO · VERSIÓN 2</text>
+</svg>
